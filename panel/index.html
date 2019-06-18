@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMM KDA</title>
+    
+    <script src="script.js"></script>
+     <script src="jquery-3.2.1.min.js"></script>
+    
+    <style>
+        form{
+            width: 50%;margin: 0 auto;
+        }
+        input[type="texty"]{
+            width: 100%;padding: 10px; margin-top: 10px; margin-bottom: 10px;
+        }
+        input[type="button"]{
+            padding: 10px;
+        }
+    
+    </style>
+</head>
+
+<body bgcolor="moccasin">
+    <center>
+        <h1><font color="darkblue"><font face="Harrington">Programa de mantenimiento de maquinaria</font></font></h1>
+            <MARQUEE SCROLLAMOUNT=12 behavior="alternate"><font color="red"><font face="Bookman Old Style">INDUSTRIAS KDA S.A. DE C.V.</font></font></MARQUEE>
+        <hr size="4px" width="100%" align="center" color="darkred"/>
+    </center>
+    
+        <center>
+            <h2><font face="Comic Sans MS" color="darkblue">Número de Máquina</font></h2>
+            <input type="text" id="busqueda" placeholder="No. Máquina" required="required" style='width: 100px; font-size: 20px; text-align: center'><br><br>
+            <input type="button" value="Buscar" id="enviar_datos_ajax" style="color:darkblue;height: 50px;width:100px;border-radius:15px;font-size:20px;background-color:gold;font-family:cursive;">
+            
+            <div id="mostrardatos">
+        <table align=center> <tr>
+            <td>Número Consecutivo</td>
+            <td><input type="number" style="font-size: 18px; text-align: center" name="numcon" id="numcon" value="" readonly="readonly"/></td>
+            </tr>
+            <tr>
+            <td>Supervisor</td>
+            <td><input type="text" style="font-size: 18px; text-align: center" name="super" id="supervi" value="" readonly="readonly"/></td>
+            </tr>
+            <tr>
+            <td>Tipo de Maquina</td>
+            <td><input type="text" style="font-size: 18px; text-align: center" name=tipo_maquina id="tipoma" value="" readonly="readonly"/></td>
+            </tr>
+            <tr>
+            <td>Marca</td>
+            <td><input type="text" style="font-size: 18px; text-align: center" name="marca" id="marca" value="" readonly="readonly"/></td>
+            </tr>
+            <tr>
+            <td>Modelo</td>
+            <td><input type="text" style="font-size: 18px; text-align: center" name="modelo" id="modelo" value="" readonly="readonly"/></td>
+            </tr>
+            <tr>
+            <td>Número de serie</td>
+            <td><input type="text" style="font-size: 18px; text-align: center" name="num_serie" id="numserie" value="" readonly="readonly"/></td>
+            </tr>
+            <tr>
+            <td>Propiedad</td>
+            <td><input type="text" style="font-size: 18px; text-align: center" name="propiedad" id="propi" value="" readonly="readonly"/></td>
+            </tr>
+            <tr>
+            <td>Mantenimiento</td>
+            <td><input type="text" name="mantenimiento" id="mantenimiento" style="font-size: 18px; text-align: center"/></td>
+            </tr>
+            <td><input type="number" hidden="hidden" style="font-size: 18px; text-align: center" id="buscar" name="" value="" readonly="readonly"/></td><br>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="Guardar" id="Guardar" value="Guardar" style="color:white;height:50px;width:100px;border-radius:15px;font-size:20px;background-color:darkblue;font-family:cursive;"/>
+                </td>
+            </tr>
+        </table>    
+            </div>
+        </center>
+</body>
+</html>
+
+<script>
+$(document).ready(function(){
+    function esconder(){
+         $('#mostrardatos').hide();
+    }
+    esconder();
+    $('#Guardar').click(function(){
+        id=$('#busqueda').val();
+        mante=$('#mantenimiento').val();
+        cadena="valor="+id+"&mante="+mante;
+        alert(cadena);
+        $.ajax({
+           type:"POST",
+            data:cadena,
+            url:'procesos/Mante.php',
+            success:function(r){
+                alert(r);
+            }
+        });
+    });
+    $('#enviar_datos_ajax').click(function(){
+        b = $('#busqueda').val();
+        //alert (b);
+        cadena = "b="+b;
+        
+        $.ajax({
+            type:"POST",
+            url:'procesos/verificar.php',
+            data:cadena,
+            success:function(r){
+            if(r==1){
+               alert("Máquina existente");
+                llenardatos();
+                $('#mostrardatos').show();
+               }  else{
+                      alert("La máquina no existe en la base de datos"); 
+                   }
+            }
+        });
+    });
+    
+    function llenardatos(){
+        $('#numcon').val();
+        $('#supervi').val();
+        $('#tipoma').val();
+        id=$('#busqueda').val();
+        cadena="id="+id;.ñ-
+        alert(cadena);
+        datos=new Array();
+        $.ajax({
+            type:"POST",
+            data:cadena,
+            url:'procesos/datos.php',
+            success:function(r){
+            datos = r.split('|');
+            id = datos[0];
+            supervi = datos[1];
+            tipo = datos[2];
+            marca = datos[3];
+            modelo = datos[4];
+            serie = datos[5];
+            propie = datos[6];
+            
+                $('#numcon').val(id);
+                $('#supervi').val(supervi);
+                $('#tipoma').val(tipo);
+                $('#marca').val(marca);
+                $('#modelo').val(modelo);
+                $('#numserie').val(serie);
+                $('#propi').val(propie);
+        }
+        });
+    }
+    
+});
+    
+    
+</script>

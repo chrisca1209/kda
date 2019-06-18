@@ -1,0 +1,45 @@
+body{
+    background-color: moccasin;   
+    font-size: 18px;
+}
+
+#mostrardatos{
+    margin: 15px auto;
+    width: 20px auto;
+}
+
+#mostrardatos {
+    
+    background-color: white;
+    text-align: center;
+    width: 31%;
+    border-collapse: separate;
+}
+td, th{
+    padding: 1px;
+}
+
+tr:nth-child(even){
+    background-color: aliceblue;
+}
+
+tr:hover td{
+    background-color: powderblue;
+    color: red;
+    font-size: 18px;
+}
+
+text{
+    width: 100px;
+}
+
+/*.exportar{
+        font-size:10px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background:#638cb5;
+        border:0px;
+        width:80px;
+        height:19px;
+       }*/
