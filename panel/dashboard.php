@@ -286,7 +286,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Main Page</h2>
+                                    <h2 class="title-1">Cifras</h2>
                                 </div>
                             </div>
                         </div>
@@ -299,8 +299,8 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>10368</h2>
-                                                <span>members online</span>
+                                                <h2>180</h2>
+                                                <span>Empleados Operando</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -318,7 +318,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>388,688</h2>
-                                                <span>items solid</span>
+                                                <span>Cantidad de Producción</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -354,7 +354,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>$1,060,386</h2>
-                                                <span>total earnings</span>
+                                                <span>total de ganancias</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
