@@ -26,11 +26,12 @@ while($datos=mysqli_fetch_array($consulta)){
     $contador=$contador+1;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
+<!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
@@ -64,6 +65,16 @@ while($datos=mysqli_fetch_array($consulta)){
     <link href="../css/style.css" rel="stylesheet" media="all">
 	
 	<style>
+
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDA</title>
+    
+    
+     <script src="jquery-3.2.1.min.js"></script>
+    
+    <style>
         form{
             width: 50%;margin: 0 auto;
         }

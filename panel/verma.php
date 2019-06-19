@@ -65,8 +65,13 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
 						<li class="active has-sub">
+
                             <a class="js-arrow" href="verma.php">
                                 <i class="fas fa-table"></i>Ver Máquina</a>
+
+                            <a class="js-arrow" href="mante.php">
+                                <i class="fas fa-table"></i>Ver Máquina.</a>
+
                             <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
