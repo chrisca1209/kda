@@ -64,7 +64,7 @@
                         </li>
 						<li class=" has-sub">
                             <a class="js-arrow" href="mante.php">
-                                <i class="fas fa-table"></i>Ver Maquina</a>
+                                <i class="fas fa-table"></i>Ver Máquina</a>
                             <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
@@ -266,7 +266,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="">
+                                                <a href="../adm/logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

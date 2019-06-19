@@ -20,7 +20,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Registro de Mantenimiento</title>
+    <title>Ver Máquina</title>
 
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
@@ -66,7 +66,7 @@
                         </li>
 						<li class="active has-sub">
                             <a class="js-arrow" href="mante.php">
-                                <i class="fas fa-table"></i>Ver maquina</a>
+                                <i class="fas fa-table"></i>Ver Máquina</a>
                             <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
