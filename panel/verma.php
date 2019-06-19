@@ -1,6 +1,5 @@
 <?php 
   session_start();
-  include("../adm/conexion.php");
   if (!isset($_SESSION['sesvar'])) {
     echo '
         <script>
@@ -21,14 +20,14 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Modificar Producto</title>
+    <title>Ver Máquina</title>
 
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -55,47 +54,58 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="../images/logo.jpg" alt="" width="180px"/>
+                    <img src="" alt="" width="180px"/>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub">
+                        <li class=" has-sub">
                             <a class="js-arrow" href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
 						<li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Productos</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class="  has-sub">
+                            <a class="js-arrow" href="verma.php">
+                                <i class="fas fa-table"></i>Ver Máquina</a>
+                            <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
                                 </li>
                                 <li>
                                     <a href="ver_producto.php">Ver Productos Existentes</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </li>
                        <li class=" has-sub">
                            <a class="js-arrow" href="#">
-                                <i class="fas fa-table"></i>Ventas</a>
+                                <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class="  has-sub">
-                                    <a href="registrar_venta.php">Registrar venta</a>
+                                    <a href="linea1.php">Línea 1</a>
                                 </li>
                                 <li>
-                                   <a href="historial_de_ventas.php">Historial de ventas</a>
+                                   <a href="linea2.php">Línea 2</a>
+                                </li>
+								<li>
+                                   <a href="linea3.php">Línea 3</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="empleado.php">
+                        <li class=" has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="far fa-check-square"></i>Empleados</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li >
+                                    <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
+                                </li>
+                                <li class=" has-sub">
+                                    <a href="ver_empleado.php">Ver Empleado</a>
+                                </li>
+                            </ul>
                         </li>
 						<li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Proveedores</a>
+                                <i class="fas fa-star"></i>Proveedores</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class="  has-sub">
                                     <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
@@ -118,11 +128,11 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
+                            <form class="form-header" action="" method="">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
+                                <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button>-->
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
@@ -240,7 +250,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="../images/logo.jpg" alt="" width="300px" />
+                                            <img src="" alt="" width="300px" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
@@ -248,7 +258,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="../images/logo.jpg" alt="" width="300px" />
+                                                    <img src="" alt="" width="300px" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -278,89 +288,65 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Modificar Producto</h2>
+                                    <h2 class="title-1">Ver Máquina</h2>
                                 </div>
                             </div>
                         </div>
-						<div>
-							<?php  
-								include("../adm/conexion.php");
-								$id_g=$_GET['id'];
-								$consulta_genero=mysqli_query($conexion,"select * from producto where id_producto='$id_g';");
-								
-								while($r=mysqli_fetch_array($consulta_genero)){
-									$id=$r['id_producto'];
-									$categoria=$r['id_categoria'];
-									$proveedor=$r['id_proveedor'];
-									$nomprodu=$r['nombre'];
-									$color=$r['color'];
-									$talla=$r['talla'];
-									$estadoori=$r['estado_origen'];
-									$precioad=$r['precio'];
-									$gastoin=$r['gastos_indi'];
-									$canti = $r ['Cantidad'];
-								}
-							
-							?>
-							<br><br>
-							<form method="POST"> 
-								<label>Categorìa: </label> <select name="categoria" required="required"><option value="<?php echo $categoria; ?>">---</option>
-								<?php
-									include("../adm/conexion.php");
-									$consulta_categoria=mysqli_query($conexion,"SELECT * FROM categoria;");
-									while($r=mysqli_fetch_array($consulta_categoria))
-									{
-										echo'<option value="'.$r['id_categoria'].'">'.$r['id_categoria'].'.- '.$r['nombre'].'</option>';
-
-									}
-								?>
-								</select>
-								<br><br>
-								<label>Proveedor: </label> <select name="proveedor" required="required"><option value="<?php echo $proveedor; ?>">---</option>
-								<?php
-									include("../adm/conexion.php");
-									$consulta_proveedor=mysqli_query($conexion,"SELECT * FROM proveedor;");
-									while($r=mysqli_fetch_array($consulta_proveedor))
-									{
-										echo'<option value="'.$r['id_proveedor'].'">'.$r['id_proveedor'].'.- '.$r['nombre'].'</option>';
-
-									}
-								?>
-								</select>
-									<label hidden="hidden">ID: </label>	<input type="text" name="idpro" value="<?php echo $id; ?>" style="width:220px" readonly="readonly" placeholder="	Nombre_Producto" hidden="hidden"/>
+						<center>
+							<div><br><br>
+								<form id="formualariobusqueda">
+									<input type="text" id="busqueda" name="busqueda" placeholder="No. Máquina" required="required" style='width: 130px; font-size: 20px; text-align: center'/>
 									<br><br>
-									<label>Nombre: </label>	<input type="text" name="nomprodu" value="<?php echo $nomprodu; ?>" style="width:220px" required="required" placeholder="	Nombre_Producto"/>
-									<br><br>
-									<label>Color: </label>	<input type="text" name="color" value="<?php echo $color; ?>" style="width:220px" placeholder="	Color_Producto"/>
-									<br><br>
-									<label>Talla: </label>	<input type="text" name="talla" value="<?php echo $talla; ?>" style="width:220px" placeholder="	Nombre_Producto"/>
-									<br><br>
-									<label>Estado de Origen: </label>	<input type="text" name="estadoori" value="<?php echo $estadoori; ?>" style="width:220px" required="required" placeholder="	Nombre_Estado"/>
-									<br><br>
-									<label>Precio de Adquisición: </label> <input type="number" name="precioad" value="<?php echo $precioad; ?>" step="0.01" style="width:120px" required="required"/>
-									<br><br>
-									<label>Gastos Indirectos: </label> <input type="number" name="gastoin" value="<?php echo $gastoin; ?>" step="0.01" style="width:120px" required="required"/>
-									<br><br>
-									<label>Cantidad: </label> <input type="number" name="canti" value="<?php echo $canti; ?>" step="0.01" style="width:120px" required="required"/>
-									<br><br>
-									<div class="overview-wrap">
-										<h3>¿Desea Actualizar el registro?</h3>
-										<input type="submit" class="au-btn au-btn-icon au-btn--blue" name="Si" value="Guardar">
-											<!--Si-->
-										<button type="button" class="au-btn au-btn-icon au-btn--blue" name="no" value="no" onclick="javascript:window.location='ver_producto.php';">
-											No
+									<input type="button" class="buscar" value="Buscar" id="enviar_datos_ajax"/>
+									<!--<div class="buscar">
+										<button class="au-btn au-btn-icon au-btn--blue" name="Buscar" id="enviar_datos_ajax" value="Buscar">
+											Mantenimiento
 										</button>
-									</div>
-							</form>
-						</div>
-						<br>
-                        <div class="row">
+									</div>-->
+								</form>
+				
+								<br><br>
+								<div id="mostrardatos">
+									<table align=center> <tr>
+										<td>Número Interno</td>
+										<td><input type="number" style="font-size: 18px; text-align: center" name="numcon" id="numcon" value="" readonly="readonly"/></td>
+										</tr>
+										<tr>
+										<td>Supervisor</td>
+										<td><input type="text" style="font-size: 18px; text-align: center" name="super" id="supervi" value="" readonly="readonly"/></td>
+										</tr>
+										<tr>
+										<td>Tipo de Maquina</td>
+										<td><input type="text" style="font-size: 18px; text-align: center" name="tipo_maquina" id="tipoma" value="" readonly="readonly"/></td>
+										</tr>
+										<tr>
+										<td>Marca</td>
+										<td><input type="text" style="font-size: 18px; text-align: center" name="marca" id="marca" value="" readonly="readonly"/></td>
+										</tr>
+										<tr>
+										<td>No.Serie</td>
+										<td><input type="text" style="font-size: 18px; text-align: center" name="numserie" id="numserie" value="" readonly="readonly"/></td>
+										</tr>
+										<tr>
+									</table><br>
+									<center>
+										<div class="mantenimiento">
+											<input type="submit" class="mantenimiento" name="Mantenimiento" id="Mantenimiento" value="Mantenimiento"/>
+											<!--<button class="au-btn au-btn-icon au-btn--blue" name="Mantenimiento" id="Mantenimiento" value="Mantenimiento">
+												Mantenimiento
+											</button>-->
+										</div>
+									</center>
+								</div>
+							</div><br>
+						</center>
+                        <!--<div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
                                     <p>Copyright © 2019 Business Technology. All rights reserved. Template by <a href="#">Business Technology</a>.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -398,29 +384,120 @@
 
 </html>
 <!-- end document-->
-<?php
-	
-	@$id=$_POST['idpro'];
-	@$categoria=$_POST['categoria'];
-	@$proveedor=$_POST['proveedor'];
-	@$nomprodu=$_POST['nomprodu'];
-	@$color=$_POST['color'];
-	@$talla=$_POST['talla'];
-	@$estadoori=$_POST['estadoori'];
-	@$precioad=$_POST['precioad'];
-	@$gastoin=$_POST['gastoin'];
-	@$canti=$_POST['canti'];
-	
-		if(isset($id)){
-			//$insertar=mysqli_query($conexion,"update producto set nombre='$nomprodu', color='$color', talla='$talla', estado_origen='$estadoori', id_proveedor='$proveedor', id_categoria='$categoria',precio='$precioad', gasto_indi='$gastoin' where id_producto='$id';");
-			$sql = 'update producto set nombre = "'.$nomprodu.'", color="'.$color.'", talla = "'.$talla.'", estado_origen="'.$estadoori.'", id_proveedor='.$proveedor.', id_categoria='.$categoria.', precio="'.$precioad.'", gastos_indi='.$gastoin.',Cantidad='.$canti.' where id_producto='.$id.';';
-			//echo "Mi SQL es: ".$sql;
-			$insertar = mysqli_query($conexion,$sql);
-				if($insertar){
-					echo"<script>alert('Datos Guardados Correctamente')</script>";
-				}else{
-					echo"<script>alert('Datos no insertados en la Base de datos \n Vuelve a intentarlo')</script>";
-				}
-		}
-	mysqli_close($conexion);
-?>
+<script>
+$(document).ready(function(){
+    function esconder(){
+         $('#mostrardatos').hide();
+        $('#Botones').hide();
+    }
+    esconder();
+    $('#Mantenimiento').click(function(){
+        
+        id=$('#numcon').val();
+        //alert(id);
+        window.location='Mantenimiento.php?var='+id;
+    });
+    /*$('#Mantenimiento').click(function(){
+        id=$('#busqueda').val();
+        mante=$('#mantenimiento').val();
+        cadena="valor="+id+"&mante="+mante;
+        alert(cadena);
+        $.ajax({
+           type:"POST",
+            data:cadena,
+            url:'procesos/Mante.php',
+            success:function(r){
+                alert(20);
+                $('#mostrardatos').hide();
+                $('#Botones').show();
+            }
+        });
+    });*/
+    $('#enviar_datos_ajax').click(function(){
+        vacios=validarcampos('formualariobusqueda');
+        //b = $('#busqueda').val();
+        //alert (b);
+        //cadena = "b="+b;
+        //alert(vacios);
+        if(vacios>0){
+            alert("¡Ingresa un valor por favor!");
+            return false;
+           }
+        
+        cadena=$('#formualariobusqueda').serialize();
+        $.ajax({
+            type:"POST",
+            url:'procesos/verificar.php',
+            data:cadena,
+            success:function(r){
+            if(r==1){
+               //alert("¡Maquina Existente en la Base de datos!\n\n***Felicidades***");
+                llenardatos();
+                $('#mostrardatos').show();
+               }  else{
+                      alert("¡La maquina No Existe en la Base de Datos!\n\n***Ingresa un número de maquina valido***");
+                   $('#mostrardatos').hide();
+                   }
+            }
+        });
+        
+    });
+    
+    function llenardatos(){
+        $('#numcon').val();
+        $('#supervi').val();
+        $('#tipoma').val();
+        id=$('#busqueda').val();
+        cadena="id="+id;
+        //alert(cadena);
+        datos=new Array();
+        $.ajax({
+            type:"POST",
+            data:cadena,
+            url:'procesos/datos.php',
+            success:function(r){
+            datos = r.split('|');
+            id = datos[0];
+            supervi = datos[1];
+            tipo = datos[2];
+            marca = datos[3];
+            modelo = datos[4];
+            serie = datos[5];
+            propie = datos[6];
+            
+                $('#numcon').val(id);
+                $('#supervi').val(supervi);
+                $('#tipoma').val(tipo);
+                $('#marca').val(marca);
+                $('#modelo').val(modelo);
+                $('#numserie').val(serie);
+                $('#propi').val(propie);
+        }
+        });
+    }
+    $('#pdf').click(function(){
+        alert("Exportar a pdf");
+        num=$('#numcon').val();
+        alert(num);
+        window.location="pdf/reporte.php?val="+num;
+    });
+    
+    function validarcampos(formulario){
+        datos=$('#'+formulario).serialize();
+        d=datos.split('&');
+        vacios=0;
+        for(i=0;i<d.length;i++){
+            controles=d[i].split("=");
+            if(controles[1]=="A" || controles[1]==""){
+                vacios++;
+            }
+        }
+        //alert(vacios);
+        return vacios;
+    }
+    
+});
+    
+    
+    
+</script>

@@ -15,8 +15,8 @@ $sql2="select * from maquinas where No_Inter_Maquina=".$num;
 $resultado= mysqli_query($conecta,$sql);
 $resultado2=mysqli_query($conecta,$sql2);
 
-$fila2=2;
-$fila=6;
+$fila2=4;
+$fila=8;
 $filename="Mantenimientos.xls";
 
 
@@ -36,16 +36,15 @@ $objPHPExcel->setActiveSheetIndex(0);
 $objPHPExcel->getActiveSheet()->setTitle("Mantenimientos");
 
 $objPHPExcel->getActiveSheet()
-->setCellValue('B1','Supervisor')
-->setCellValue('C1','Tipo de Maquina')
-->setCellValue('D1','Marca')
-->setCellValue('E1','Modelo')
-->setCellValue('F1','No. Serie')
-->setCellValue('G1','No. Interno')
-->setCellValue('B5','No. Mantenimiento')
-->setCellValue('C5','No. Consecutivo')
-->setCellValue('D5','Mantenimiento')
-->setCellValue('E5','Fecha');
+->setCellValue('B3','Supervisor')
+->setCellValue('C3','Tipo de Maquina')
+->setCellValue('D3','Marca')
+->setCellValue('E3','Modelo')
+->setCellValue('F3','No. Serie')
+->setCellValue('G3','No. Interno')
+->setCellValue('B7','No. Mantenimiento')
+->setCellValue('C7','Mantenimiento')
+->setCellValue('D7','Fecha');
 
 /*$objPHPExcel->getActiveSheet()
 ->setCellValue('B3','No. Mantenimiento')
@@ -57,9 +56,8 @@ $objPHPExcel->getActiveSheet()
 while($row=$resultado->fetch_assoc()){
     
     $objPHPExcel->getActiveSheet()->setCellValue('B'.$fila, $row['ID_Mante']);
-    $objPHPExcel->getActiveSheet()->setCellValue('C'.$fila, $row['No_Inter_Maquina']);
-    $objPHPExcel->getActiveSheet()->setCellValue('D'.$fila, $row['Nombre_Mantenimiento']);
-    $objPHPExcel->getActiveSheet()->setCellValue('E'.$fila, $row['Fecha']);
+    $objPHPExcel->getActiveSheet()->setCellValue('C'.$fila, $row['Nombre_Mantenimiento']);
+    $objPHPExcel->getActiveSheet()->setCellValue('D'.$fila, $row['Fecha']);  
     
     $fila++;
     
@@ -74,7 +72,7 @@ while($row2=$resultado2->fetch_assoc()){
     $objPHPExcel->getActiveSheet()->setCellValue('F'.$fila2, $row2['No_Serie']);
     $objPHPExcel->getActiveSheet()->setCellValue('G'.$fila2, $row2['No_Inter_Maquina']);
     
-    $fila2++;
+    $fila2*2;
     
 }
 
