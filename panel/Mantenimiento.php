@@ -46,7 +46,7 @@ while($datos=mysqli_fetch_array($consulta)){
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -71,8 +71,6 @@ while($datos=mysqli_fetch_array($consulta)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KDA</title>
     
-    
-     <script src="jquery-3.2.1.min.js"></script>
     
     <style>
         form{
@@ -204,7 +202,7 @@ while($datos=mysqli_fetch_array($consulta)){
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="../images/logo.jpg" alt="" width="180px"/>
+                    <img src="" alt="" width="180px"/>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -491,10 +489,10 @@ while($datos=mysqli_fetch_array($consulta)){
 								<div id="Botones"> 
 									<center><br><br><br><br>
 										<div id="etipdf">
-											<a  id="pdf" value="Exportar PDF" class="exportarpdf"><img src="Imagenes/pdf.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a PDF</font></a>
+											<a type="button" id="pdf" value="Exportar PDF" class="exportarpdf"><img src="Imagenes/pdf.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a PDF</font></a>
 										</div>
-										<div id="etiexcel">
-											<a  id="excel" value="Exportar Excel" class="exportarexcel"><img src="Imagenes/excel.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a Excel</font></a>
+										<div id="etiqexcel">
+											<a type="button" id="excel" value="Exportar Excel" class="exportarexcel"><img src="Imagenes/excel.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a Excel</font></a>
 										</div>
 									</center>
 								</div>
