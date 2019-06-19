@@ -8,7 +8,7 @@
     
      <script src="jquery-3.2.1.min.js"></script>
     
-    <style>
+    <!--<style>
         form{
             width: 50%;margin: 0 auto;
         }
@@ -90,15 +90,15 @@
         }
     
     
-    </style>
+    </style>-->
 </head>
 
 <body bgcolor="moccasin">
-    <center>
+    <!--<center>
         <h1><font color="darkblue"><font face="Harrington">Programa de mantenimiento de maquinaria</font></font></h1>
             <MARQUEE SCROLLAMOUNT=12 behavior="alternate"><font color="red"><font face="Bookman Old Style">INDUSTRIAS KDA S.A. DE C.V.</font></font></MARQUEE>
         <hr size="4px" width="100%" align="center" color="darkred"/>
-    </center>
+    </center>-->
     
         <center>
             <h2><font face="Comic Sans MS" color="darkblue">Número de Máquina</font></h2>

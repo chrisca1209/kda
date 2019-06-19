@@ -27,7 +27,7 @@
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -52,7 +52,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="../images/logo.jpg" alt="" width="180px"/>
+                    <img src="" alt="" width="180px"/>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -63,26 +63,29 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
 						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Productos</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <a class="js-arrow" href="mante.php">
+                                <i class="fas fa-table"></i>Ver Maquina</a>
+                            <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
                                 </li>
                                 <li>
                                     <a href="ver_producto.php">Ver Productos Existentes</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </li>
                        <li class=" has-sub">
                            <a class="js-arrow" href="#">
-                                <i class="fas fa-table"></i>Ventas</a>
+                                <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class="  has-sub">
-                                    <a href="registrar_venta.php">Registrar venta</a>
+                                    <a href="linea1.php">Línea 1</a>
                                 </li>
                                 <li>
-                                   <a href="historial_de_ventas.php">Historial de ventas</a>
+                                   <a href="linea2.php">Línea 2</a>
+                                </li>
+								<li>
+                                   <a href="linea3.php">Línea 3</a>
                                 </li>
                             </ul>
                         </li>
@@ -100,7 +103,7 @@
                         </li>
 						<li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Proveedores</a>
+                                <i class="fas fa-star"></i>Proveedores</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class="  has-sub">
                                     <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
@@ -125,9 +128,9 @@
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
+                                <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button>-->
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
@@ -245,7 +248,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="../images/logo.jpg" alt="" width="300px" />
+                                            <img src="" alt="" width="300px" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
@@ -253,7 +256,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="../images/logo.jpg" alt="" width="300px" />
+                                                    <img src="" alt="" width="300px" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -263,7 +266,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="../adm/logout.php">
+                                                <a href="">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -284,6 +287,80 @@
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">Main Page</h2>
+                                </div>
+                            </div>
+                        </div>
+						<div class="row m-t-25">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-account-o"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>10368</h2>
+                                                <span>members online</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart1"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c2">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-shopping-cart"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>388,688</h2>
+                                                <span>items solid</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart2"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c3">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-calendar-note"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>1,086</h2>
+                                                <span>this week</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart3"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c4">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-money"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>$1,060,386</h2>
+                                                <span>total earnings</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart4"></canvas>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
