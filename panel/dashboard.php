@@ -64,7 +64,7 @@
                         </li>
 						<li class=" has-sub">
                             <a class="js-arrow" href="mante.php">
-                                <i class="fas fa-table"></i>Ver Máquina</a>
+                                <i class="fas fa-table"></i>Ver Máquina.</a>
                             <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
@@ -73,10 +73,10 @@
                                     <a href="ver_producto.php">Ver Productos Existentes</a>
                                 </li>
                             </ul>-->
-                        </li>
+             </li>
                        <li class=" has-sub">
                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
+                                <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class="  has-sub">
                                     <a href="linea1.php">Línea 1</a>
@@ -91,7 +91,7 @@
                         </li>
                         <li class=" has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Empleados</a>
+                                <i class="far fa-check-square"></i>Empleados.</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li >
                                     <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
@@ -103,7 +103,7 @@
                         </li>
 						<li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-star"></i>Proveedores</a>
+                                <i class="fas fa-star"></i>Proveedores.</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class="  has-sub">
                                     <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
@@ -300,7 +300,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>180</h2>
-                                                <span>Empleados Operando</span>
+                                                <span>Empleados Operando.</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -318,7 +318,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>388,688</h2>
-                                                <span>Cantidad de Producción</span>
+                                                <span>Cantidad de Producción.</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -336,7 +336,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2>1,086</h2>
-                                                <span>this week</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">

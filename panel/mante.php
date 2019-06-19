@@ -66,7 +66,7 @@
                         </li>
 						<li class="active has-sub">
                             <a class="js-arrow" href="mante.php">
-                                <i class="fas fa-table"></i>Ver Máquina</a>
+                                <i class="fas fa-table"></i>Ver Máquina.</a>
                             <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
