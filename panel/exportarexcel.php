@@ -90,7 +90,7 @@ header("Content-Disposition: attachment;filename=$filename");
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel5');
 $objWriter->save('php://output');
-exit;
-
+echo '<script> window.location="Mantenimiento.php"</script>';
+exit;	
 
 ?>

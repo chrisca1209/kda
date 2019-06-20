@@ -27,7 +27,7 @@
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="" type="image/ico">
+	<link rel="icon" href="../images/kda1.ico" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -52,9 +52,10 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="" alt="" width="180px"/>
+                    <br><br><br><br><img src="../images/kda1.png" alt="" width="180px"/>
                 </a>
             </div>
+            <br><br><br>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">

@@ -46,7 +46,7 @@ while($datos=mysqli_fetch_array($consulta)){
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="" type="image/ico">
+	<link rel="icon" href="../images/kda1.ico" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -63,14 +63,12 @@ while($datos=mysqli_fetch_array($consulta)){
     <!-- Main CSS-->
     <link href="../css/theme.css" rel="stylesheet" media="all">
     <link href="../css/style.css" rel="stylesheet" media="all">
-	
-	<style>
+    
 
-    <link rel="stylesheet" href="estilos.css">
+    <!--<link rel="stylesheet" href="estilos.css">-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KDA</title>
-    
     
     <style>
         form{
@@ -196,24 +194,25 @@ while($datos=mysqli_fetch_array($consulta)){
 
 </head>
 
-<body class="animsition">
+<body >
     <div class="page-wrapper">
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="" alt="" width="180px"/>
+                    <br><br><br><br><img src="../images/kda1.png" alt="" width="180px"/>
                 </a>
             </div>
+            <br><br><br>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class=" has-sub">
-                            <a class="js-arrow" href="./dashboard.php">
+                            <a href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
 						<li class="active has-sub">
-                            <a class="js-arrow" href="verma.php">
+                            <a href="verma.php">
                                 <i class="fas fa-table"></i>Ver Máquina</a>
                             <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
@@ -278,9 +277,9 @@ while($datos=mysqli_fetch_array($consulta)){
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
+                                <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button>-->
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
@@ -491,7 +490,7 @@ while($datos=mysqli_fetch_array($consulta)){
 										<div id="etipdf">
 											<a type="button" id="pdf" value="Exportar PDF" class="exportarpdf"><img src="Imagenes/pdf.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a PDF</font></a>
 										</div>
-										<div id="etiqexcel">
+										<div id="etiexcel">
 											<a type="button" id="excel" value="Exportar Excel" class="exportarexcel"><img src="Imagenes/excel.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a Excel</font></a>
 										</div>
 									</center>
@@ -524,7 +523,7 @@ while($datos=mysqli_fetch_array($consulta)){
     <script src="../vendor/slick/slick.min.js">
     </script>
     <script src="../vendor/wow/wow.min.js"></script>
-    <script src="../vendor/animsition/animsition.min.js"></script>
+    <<script src="../vendor/animsition/animsition.min.js"></script>
     <script src="../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
     <script src="../vendor/counter-up/jquery.waypoints.min.js"></script>
@@ -577,6 +576,5 @@ while($datos=mysqli_fetch_array($consulta)){
 			window.location="exportarexcel.php?val="+num;
 		});
         
-        
     });
-</script>
+</script>	
