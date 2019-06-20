@@ -117,11 +117,11 @@ while($datos=mysqli_fetch_array($consulta)){
             color: white;
             background-color: dodgerblue;
             border-radius: 15px;
-            border: 4px solid blue;
+            border: 4px solid bluw;
         }
         .exportarpdf:hover{
-            color: red;
-            background-color: white;
+            color: white;
+            background-color: yellow;
         }
         .exportarexcel{
             text-decoration: none;
@@ -131,11 +131,11 @@ while($datos=mysqli_fetch_array($consulta)){
             color: white;
             background-color: dodgerblue;
             border-radius: 15px;
-            border: 4px solid blue;
+            border: 4px solid bluw;
         }
         .exportarexcel:hover{
             color: green;
-            background-color: white;
+            background-color: lightgreen;
         }
         
         /*.inicio{
@@ -170,16 +170,16 @@ while($datos=mysqli_fetch_array($consulta)){
             width: 300px;
             height: 300px;
             position: fixed;
-            top: 470px;
-            right: 730px;
+            top: 550px;
+            right: 520px;
         }
         
         #etiexcel{
             width: 300px;
             height: 300px;
             position: fixed;
-            top: 470px;
-            right: 330px;
+            top: 550px;
+            right: 200px;
         }
         /*#etiagregar{
             width: 100px;
@@ -488,7 +488,7 @@ while($datos=mysqli_fetch_array($consulta)){
 								<div id="Botones"> 
 									<center><br><br><br><br>
 										<div id="etipdf">
-											<a type="button" id="pdf" value="Exportar PDF" class="exportarpdf"><img src="Imagenes/pdf.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a PDF</font></a>
+											<a type="button" id="pdf" value="Exportar PDF" class="exportarpdf"><img src="Imagenes/pdf.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">  Exportar a PDF</font></a>
 										</div>
 										<div id="etiexcel">
 											<a type="button" id="excel" value="Exportar Excel" class="exportarexcel"><img src="Imagenes/excel.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a Excel</font></a>
