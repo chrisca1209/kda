@@ -19,7 +19,7 @@ $cajas=$cajasC;
 
 $id=$_GET['var'];
 $conecta=mysqli_connect('localhost','root','','kda');
-$sql="select * from mantenimiento where No_Inter_Maquina=".$id;
+$sql="select * from mantenimiento where No_interno_maquina=".$id;
 $consulta=mysqli_query($conecta,$sql);
 $contador=0;
 while($datos=mysqli_fetch_array($consulta)){
@@ -207,7 +207,10 @@ while($datos=mysqli_fetch_array($consulta)){
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class=" has-sub">
+                       <?php
+                        if($_SESSION['id_roluser'] == 1){
+                            
+                        echo '<li class=" has-sub">
                             <a href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
@@ -240,13 +243,10 @@ while($datos=mysqli_fetch_array($consulta)){
                         </li>
                         <li class=" has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Empleados</a>
+                                <i class="far fa-check-square"></i>Supervisores</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li >
-                                    <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                </li>
                                 <li class=" has-sub">
-                                    <a href="ver_empleado.php">Ver Empleado</a>
+                                    <a href="ver_supervisor.php">Ver Supervisor</a>
                                 </li>
                             </ul>
                         </li>
@@ -261,7 +261,9 @@ while($datos=mysqli_fetch_array($consulta)){
                                     <a href="ver_proveedor.php">Ver Proveedores</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>';
+                        }
+                        ?>
                     </ul>
                 </nav>
             </div>
@@ -282,7 +284,7 @@ while($datos=mysqli_fetch_array($consulta)){
                                 </button>-->
                             </form>
                             <div class="header-button">
-                                <div class="noti-wrap">
+                                <!--<div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>
@@ -393,11 +395,11 @@ while($datos=mysqli_fetch_array($consulta)){
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="" alt="" width="300px" />
+                                            <img src="../images/user.png" alt="" width="300px" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
@@ -405,7 +407,7 @@ while($datos=mysqli_fetch_array($consulta)){
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="" alt="" width="300px" />
+                                                    <img src="../images/kda1.png" alt="" width="300px" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -452,12 +454,12 @@ while($datos=mysqli_fetch_array($consulta)){
 											<td>Fecha</td>
 										</tr>
 										<?php
-											$sqlD="select * from mantenimiento where No_Inter_Maquina=".$id;
+											$sqlD="select * from mantenimiento where No_interno_maquina=".$id;
 											$consultaD=mysqli_query($conecta,$sqlD);
 											while($datos3=mysqli_fetch_array($consultaD)){
 										?>
 										<tr>
-											<td><?php echo $datos3['Nombre_Mantenimiento'];?></td>
+											<td><?php echo $datos3['Descripcion'];?></td>
 											<td><?php echo $datos3['Fecha'];?></td>
 										</tr>
 										<?php
@@ -488,10 +490,10 @@ while($datos=mysqli_fetch_array($consulta)){
 								<div id="Botones"> 
 									<center><br><br><br><br>
 										<div id="etipdf">
-											<a type="button" id="pdf" value="Exportar PDF" class="exportarpdf"><img src="Imagenes/pdf.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">  Exportar a PDF</font></a>
+											<a type="button" id="pdf" value="Exportar PDF" class="exportarpdf" target="_blank"><img src="Imagenes/pdf.ico" style="width:40px;height:40px;" /><font face="Arial" size="4px">  Exportar a PDF</font></a>
 										</div>
 										<div id="etiexcel">
-											<a type="button" id="excel" value="Exportar Excel" class="exportarexcel"><img src="Imagenes/excel.ico" style="width:40px;height:40px;"/><font face="Arial" size="4px">Exportar a Excel</font></a>
+											<a type="button" id="excel" value="Exportar Excel" class="exportarexcel"><img src="Imagenes/excel.ico" style="width:40px;height:40px;" target="_blank"/><font face="Arial" size="4px">Exportar a Excel</font></a>
 										</div>
 									</center>
 								</div>
@@ -523,7 +525,7 @@ while($datos=mysqli_fetch_array($consulta)){
     <script src="../vendor/slick/slick.min.js">
     </script>
     <script src="../vendor/wow/wow.min.js"></script>
-    <<script src="../vendor/animsition/animsition.min.js"></script>
+    <script src="../vendor/animsition/animsition.min.js"></script>
     <script src="../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
     <script src="../vendor/counter-up/jquery.waypoints.min.js"></script>
@@ -564,9 +566,11 @@ while($datos=mysqli_fetch_array($consulta)){
         
         $('#pdf').click(function(){
 			//alert("Exportar a pdf");
+            
 			num=$('#valorID').val();
 			//alert(num);
-			window.location="pdf/reporte.php?val="+num;
+            window.open("pdf/reporte.php?val="+num,'_blank');
+			//window.location="pdf/reporte.php?val="+num;
 		});
        
         $('#excel').click(function(){

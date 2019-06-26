@@ -8,28 +8,28 @@
 		';
 	}//end of if
 
-	include('../adm/conexion.php');
+	include('conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <!-- Required meta tags-->
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Ver Empleados</title>
+    <title>Ver Supervisores</title>
 
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="../images/kda1.ico" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -57,9 +57,10 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="../images/logo.jpg" alt="" width="180px"/>
+                    <br><br><br><br><img src="../images/kda1.png" alt="" width="180px"/>
                 </a>
             </div>
+            <br><br><br>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
@@ -68,31 +69,41 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
 						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Productos</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <a class="js-arrow" href="verma.php">
+                                <i class="fas fa-table"></i>Ver Máquina</a>
+                            <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li class=" has-sub">
                                     <a href="registro_producto.php">Registrar Nuevo Producto</a>
                                 </li>
                                 <li>
                                     <a href="ver_producto.php">Ver Productos Existentes</a>
                                 </li>
+                            </ul>-->
+                         </li>
+                         <li class=" has-sub">
+                           <a class="js-arrow" href="#">
+                                <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li class="  has-sub">
+                                    <a href="linea1.php">Línea 1</a>
+                                </li>
+                                <li>
+                                   <a href="linea2.php">Línea 2</a>
+                                </li>
+								<li>
+                                   <a href="linea3.php">Línea 3</a>
+                                </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="./venta.php">
-                                <i class="fas fa-table"></i>Ventas</a>
-                        </li>
-						
 						<li class=" active has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Empleados</a>
+                                <i class="far fa-check-square"></i>Supervisores</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li >
+                                <!--<li>
                                     <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                </li>
+                                </li>-->
                                 <li class=" active has-sub">
-                                    <a href="ver_empleado.php">Ver Empleado</a>
+                                    <a href="ver_supervisor.php">Ver Supervisor</a>
                                 </li>
                             </ul>
                         </li>
@@ -244,7 +255,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="../images/logo.jpg" alt="" width="300px" />
+                                            <img src="../images/user.png" alt="" width="300px" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
@@ -252,7 +263,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="../images/logo.jpg" alt="" width="300px" />
+                                                    <img src="../images/kda1.png" alt="" width="300px" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -289,21 +300,18 @@
 						<br><br>
 						<div>
 							<?php 
-								$query = 'SELECT * FROM empleado;';
-								$query_result = mysqli_query($conexion,$query);
+								$query = 'SELECT * FROM supervisor;';
+								$query_result = mysqli_query($conecta,$query);
 							?>
-						<a href="registro_empleado.php"><button type="button" class="btn btn-info"> + Nuevo Registro</button></a>
-						<br><br>
+							
+						<!--<a href="registro_empleado.php"><button type="button" class="btn btn-info"> + Nuevo Registro</button></a>
+						<br><br>-->
 						<table id="productos" style="text-align:center">
 								<thead style="">
 									<th>ID</th>
 									<th>Nombre</th>
 									<th>Apellido Paterno</th>
 									<th>Apellido Materno</th>
-									<th>Correo</th>
-									<th>Telefono</th>
-									<th>Calle</th>
-									<th>Número</th>
 									<th></th>
 									<th></th>
 								</thead>
@@ -312,16 +320,12 @@
 										while(($row = mysqli_fetch_array($query_result)) != null){
 										
 											echo '<tr>
-												<td>'.$row['id_empleado'].'</td>
-												<td>'.$row['nombre'].'</td>
-												<td>'.$row['ap_p'].'</td>
-												<td>'.$row['ap_m'].'</td>
-												<td>'.$row['correo'].'</td>
-												<td>'.$row['telefono'].'</td>
-												<td>'.$row['calle'].'</td>
-												<td>'.$row['numero'].'</td>
-												<td><a href=modificar_empleado.php?id='.$row['id_empleado'].'><button type="button" class="btn btn-success">Editar</button></a></td>
-												<td><a href=eliminar_empleado.php?id='.$row['id_empleado'].'><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+												<td>'.$row[0].'</td>
+												<td>'.$row[1].'</td>
+												<td>'.$row[2].'</td>
+												<td>'.$row[3].'</td>
+												<td><a href=modificar_supervisor.php?id='.$row[0].'><button type="button" class="btn btn-success">Editar</button></a></td>
+												<td><a href=eliminar_supervisor.php?id='.$row[0].'><button type="button" class="btn btn-danger">Eliminar</button></a></td>
 											</tr>';
 										}//end while
 									?>
@@ -329,13 +333,13 @@
 							</table>
 						</div>
 						<br>
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
                                     <p>Copyright © 2019 Business Technology. All rights reserved. Template by <a href="#">Business Technology</a>.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

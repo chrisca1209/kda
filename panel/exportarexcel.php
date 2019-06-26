@@ -8,8 +8,8 @@ include 'conexion.php';
 $objPHPExcel=new PHPExcel();
 
 $num=$_GET['val'];
-$sql="Select * from mantenimiento where No_Inter_Maquina=".$num;
-$sql2="select * from maquinas where No_Inter_Maquina=".$num;
+$sql="Select * from mantenimiento where No_interno_maquina=".$num;
+$sql2="select * from maquinas where No_interno_maquina=".$num;
 
 
 $resultado= mysqli_query($conecta,$sql);
@@ -23,17 +23,17 @@ $filename="Mantenimientos.xls";
 //$objPHPExcel->getProperties()->setCreator("Cante")->setDescription("Reporte de Mantenimiento");
 
 $objPHPExcel->getProperties()
-->setCreator("Cante")
-->setLastModifiedBy("Cante")
-->setTitle("Documento Excel de Prueba")
-->setSubject("Documento Excel de Prueba")
-->setDescription("Demostracion sobre como crear archivos de Excel desde PHP.")
+->setCreator("TI")
+->setLastModifiedBy("TI")
+->setTitle("Reporte de Mantenimiento")
+->setSubject("Reporte de Mantenimiento")
+->setDescription("Documento exportado desde PHP")
 ->setKeywords("Excel Office 2016 openxml php")
-->setCategory("Pruebas de Excel"); 
+->setCategory("Excel listo"); 
 
 $objPHPExcel->setActiveSheetIndex(0);
 
-$objPHPExcel->getActiveSheet()->setTitle("Mantenimientos");
+$objPHPExcel->getActiveSheet()->setTitle("Mantenimiento de Maquina");
 
 $objPHPExcel->getActiveSheet()
 ->setCellValue('B3','Supervisor')
@@ -55,8 +55,8 @@ $objPHPExcel->getActiveSheet()
 
 while($row=$resultado->fetch_assoc()){
     
-    $objPHPExcel->getActiveSheet()->setCellValue('B'.$fila, $row['ID_Mante']);
-    $objPHPExcel->getActiveSheet()->setCellValue('C'.$fila, $row['Nombre_Mantenimiento']);
+    $objPHPExcel->getActiveSheet()->setCellValue('B'.$fila, $row['id_mantenimiento']);
+    $objPHPExcel->getActiveSheet()->setCellValue('C'.$fila, $row['Descripcion']);
     $objPHPExcel->getActiveSheet()->setCellValue('D'.$fila, $row['Fecha']);  
     
     $fila++;
@@ -66,11 +66,11 @@ while($row=$resultado->fetch_assoc()){
 while($row2=$resultado2->fetch_assoc()){
     
     $objPHPExcel->getActiveSheet()->setCellValue('B'.$fila2, $row2['Supervisor']);
-    $objPHPExcel->getActiveSheet()->setCellValue('C'.$fila2, $row2['Tipo_Maquina']);
+    $objPHPExcel->getActiveSheet()->setCellValue('C'.$fila2, $row2['Tipo_maquina']);
     $objPHPExcel->getActiveSheet()->setCellValue('D'.$fila2, $row2['Marca']);
     $objPHPExcel->getActiveSheet()->setCellValue('E'.$fila2, $row2['Modelo']);
-    $objPHPExcel->getActiveSheet()->setCellValue('F'.$fila2, $row2['No_Serie']);
-    $objPHPExcel->getActiveSheet()->setCellValue('G'.$fila2, $row2['No_Inter_Maquina']);
+    $objPHPExcel->getActiveSheet()->setCellValue('F'.$fila2, $row2['No_serie']);
+    $objPHPExcel->getActiveSheet()->setCellValue('G'.$fila2, $row2['No_interno_maquina']);
     
     $fila2*2;
     

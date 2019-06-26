@@ -1,0 +1,3 @@
+administrador@kda.com		administrador1234
+
+empleado@kda.com		empleado1234

@@ -5,16 +5,16 @@
     $conecta=mysqli_connect('localhost','root','','kda');
     $num=$_GET['val'];
     
-    $sql="select * from maquinas where No_Inter_Maquina=".$num;
+    $sql="select * from maquinas where No_interno_maquina=".$num;
     $consulta=mysqli_query($conecta,$sql);
 
     while($datos=mysqli_fetch_array($consulta)){
-    $numcon=$datos['No_Inter_Maquina'];
+    $numcon=$datos['No_interno_maquina'];
     $supervi=$datos['Supervisor'];
-    $tipomaquina=$datos['Tipo_Maquina'];
+    $tipomaquina=$datos['Tipo_maquina'];
     $marca=$datos['Marca'];
     $modelo=$datos['Modelo'];
-    $numserie=$datos['No_Serie'];
+    $numserie=$datos['No_serie'];
     $pro=$datos['Propiedad'];
     //$mante=$datos['Mantenimiento'];
     }
@@ -48,7 +48,7 @@ $pdf->Ln(1);
     $pdf->Cell(80,6,utf8_decode($numserie),1,1,'C');
 $pdf->Ln(1);
     
-$sqlM="select * from mantenimiento where No_Inter_Maquina=".$num ;
+$sqlM="select * from mantenimiento where No_interno_maquina=".$num ;
 $consultaM=mysqli_query($conecta,$sqlM);
 $pdf->Cell(40,6,'Fecha',1,0,'C',1);
 $pdf->Cell(80,6,'Mantenimiento',1,1,'C',1);
@@ -60,7 +60,7 @@ while($datosM=mysqli_fetch_array($consultaM)){
     $pdf->MultiCell(30,6,utf8_decode($datosM['Fecha']),1,0,'C');*/
     
     $pdf->Cell(40,6,utf8_decode($datosM['Fecha']),1,0,'C');
-$pdf->MultiCell(80,6,utf8_decode($datosM['Nombre_Mantenimiento']),1,1,'C');
+$pdf->MultiCell(80,6,utf8_decode($datosM['Descripcion']),1,1,'C');
     
 }
 
