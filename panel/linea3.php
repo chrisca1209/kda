@@ -67,19 +67,25 @@ include ('../adm/conexion.php');
                             <a href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-						<li class="active has-sub">
-                            <a href="verma.php">
-                                <i class="fas fa-table"></i>Ver Máquina</a>
-                            <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class=" has-sub">
-                                    <a href="registro_producto.php">Registrar Nuevo Producto</a>
-                                </li>
-                                <li>
-                                    <a href="ver_producto.php">Ver Productos Existentes</a>
-                                </li>
-                            </ul>-->
-                        </li>
-                       <li class=" has-sub">
+						<?php 
+                        if($_SESSION['id_roluser'] == 1){
+                            echo 
+                            '
+                            <li class=" has-sub">
+                                <a class="js-arrow" href="verma.php">
+                                    <i class="fas fa-table"></i>Ver Máquina</a>
+                                <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li class=" has-sub">
+                                        <a href="registro_producto.php">Registrar Nuevo Producto</a>
+                                    </li>
+                                    <li>
+                                        <a href="ver_producto.php">Ver Productos Existentes</a>
+                                    </li>
+                                </ul>-->
+                             </li>';
+                            }
+                            ?>
+                       <li class="active has-sub">
                            <a class="js-arrow" href="#">
                                 <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -94,30 +100,35 @@ include ('../adm/conexion.php');
                                 </li>
                             </ul>
                         </li>
-                        <li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Empleados</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li >
-                                    <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                </li>
-                                <li class=" has-sub">
-                                    <a href="ver_empleado.php">Ver Empleado</a>
-                                </li>
-                            </ul>
-                        </li>
-						<li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-star"></i>Proveedores</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class="  has-sub">
-                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                </li>
-                                <li>
-                                    <a href="ver_proveedor.php">Ver Proveedores</a>
-                                </li>
-                            </ul>
-                        </li>
+                        <?php 
+                                if($_SESSION['id_roluser'] == 1){
+                                    echo
+                                    '<li class=" has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="far fa-check-square"></i>Supervisores</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <!--<li >
+                                                <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
+                                            </li>-->
+                                            <li class=" has-sub">
+                                                <a href="ver_supervisor.php">Ver Supervisor</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-star"></i>Proveedores.</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li class="  has-sub">
+                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                            </li>
+                                            <li>
+                                                <a href="ver_proveedor.php">Ver Proveedores</a>
+                                            </li>
+                                        </ul>
+                                    </li>';
+                                }
+                            ?>
                     </ul>
                 </nav>
             </div>
@@ -133,12 +144,12 @@ include ('../adm/conexion.php');
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
+                                <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button>-->
                             </form>
                             <div class="header-button">
-                                <div class="noti-wrap">
+                                <!--<div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>
@@ -249,11 +260,11 @@ include ('../adm/conexion.php');
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="../images/logo.jpg" alt="" width="300px" />
+                                            <img src="../images/user.png" alt="" width="300px" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
@@ -261,7 +272,7 @@ include ('../adm/conexion.php');
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="../images/logo.jpg" alt="" width="300px" />
+                                                    <img src="../images/kda1.png" alt="" width="300px" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -291,7 +302,7 @@ include ('../adm/conexion.php');
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Registro de Produción.<br>Linea de Moises:</br></h2>
+                                    <h2 class="title-1">Registro de Produción.<br>Linea de Carolina:</h2>
                                 </div>
                             </div>
                         </div>

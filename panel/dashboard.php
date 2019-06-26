@@ -59,14 +59,14 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                       <?php 
-                        if($_SESSION['id_roluser'] == 1){
-                            echo 
-                            '<li class="active has-sub">
+                       <li class="active has-sub">
                                 <a class="js-arrow" href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
-                            
+                            <?php 
+                        if($_SESSION['id_roluser'] == 1){
+                            echo 
+                            '
                             <li class=" has-sub">
                                 <a class="js-arrow" href="verma.php">
                                     <i class="fas fa-table"></i>Ver Máquina</a>
