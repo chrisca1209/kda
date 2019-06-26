@@ -45,6 +45,7 @@ include ('../adm/conexion.php');
     <!-- Main CSS-->
     <link href="../css/theme.css" rel="stylesheet" media="all">
     <link href="../css/style.css" rel="stylesheet" media="all">
+		<link href="../vendor/DataTables/datatables.css" rel="stylesheet" media="all">
 	
 
 </head>
@@ -290,10 +291,56 @@ include ('../adm/conexion.php');
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Registro de Produción.<br>Linea de Juana:</br></h2>
+                                    <h2 class="title-1">Registro de Produción.<br>Linea de Moises:</br></h2>
                                 </div>
                             </div>
                         </div>
+												<div class="row"> 
+						<div class="col-md-7">
+							<div class="overview-wrap">
+										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#modal-cantidad-dia">
+											Agregar Producción del día.
+										</button>
+							</div>
+						</div>
+						<div class="col-md-3">
+						<div class="overview-wrap">
+										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-dia">
+											Día.
+										</button>
+										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-periodo">
+											Periodo.
+										</button>
+										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-mes">
+											Mes.
+										</button>
+									</div>
+						</div>	
+						</div>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-md-12">
+							<table id="Tabla-Producción">
+							<thead>
+							<th>
+							numero
+							</th>
+							</thead>
+							<tbody>
+							<tr>
+							<td>
+							1
+							</td>
+							</tr>
+							</tbody>
+							
+							</table>
+							</div>
+						
+						</div>
+						<br>
+												
 						<div>
 							
 									<div class="overview-wrap">
@@ -319,6 +366,190 @@ include ('../adm/conexion.php');
         <!-- END PAGE CONTAINER-->
 
     </div>
+		<div class="modal" tabindex="-1" role="dialog" id="modal-cantidad-dia">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Producción del Día.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<div class="row">
+			<div class="col-md-12">
+			<label>
+				<h4>Cantidad Producción.</h4>
+			</label>
+			
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-md-12">
+			<input type="number" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control">
+			</div>
+			</div>
+        <p><p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="Producción-dia">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+			<?php
+			$con=mysqli_connect('localhost','root','','kda');
+			$consulta=mysqli_query($con,"select curdate()");
+			$fecha=mysqli_fetch_array($consulta);
+			?>
+        <h5 class="modal-title">Producción del Día <?php echo $fecha[0];?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<div class="row">
+			<div class="col-md-12">
+			<label>
+				<h4>Cantidad Producción.</h4>
+			</label>
+			
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-md-12">
+			<input type="number" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control">
+			</div>
+			</div>
+        <p><p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Ver Producción</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="Producción-periodo">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Producción por Periodo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<div class="row">
+			<div class="col-md-6">
+			<label>
+				<h4>Fecha Inicio</h4>
+				
+			</label>
+			
+			</div>
+			<div class="col-md-6">
+			<label>
+				<h4>Fecha Fin</h4>
+				
+			</label>
+			
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-md-6">
+			<input type="date" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control">
+			
+			</div>
+			<div class="col-md-6">
+			<input type="date" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control">
+			
+			</div>
+			</div>
+        <p><p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Ver Producción</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="Producción-mes">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Producción del Mes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<div class="row">
+			<div class="col-md-12">
+			<label>
+				<h4>Elige el Mes de Producción.</h4>
+			</label>
+			
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-md-12">
+			<select class="js-example-basic-single" name="mes">
+			<option value="enero"> 
+			Enero
+			</option>
+			<option value="febrero"> 
+			Febrero
+			</option>
+			<option value="marzo"> 
+			Marzo
+			</option>
+			<option value="abril"> 
+			Abril
+			</option>
+			<option value="mayo"> 
+			Mayo
+			</option>
+			<option value="junio"> 
+			Junio
+			</option>
+			<option value="julio"> 
+			Julio
+			</option>
+			<option value="agosto"> 
+			Agosto
+			</option>
+			<option value="septiembre"> 
+			Septiembre
+			</option>
+			<option value="octubre"> 
+			Octubre
+			</option>
+			<option value="noviembre"> 
+			Noviembre
+			</option>
+			<option value="diciembre"> 
+			Diciembre
+			</option>
+			</select>
+			
+			</div>
+			</div>
+        <p><p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Ver Producción</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Jquery JS-->
     <script src="../vendor/jquery-3.2.1.min.js"></script>
@@ -340,12 +571,20 @@ include ('../adm/conexion.php');
     <script src="../vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="../vendor/select2/select2.min.js">
     </script>
+		<script src="../vendor/DataTables/datatables.js">
+    </script>
 
     <!-- Main JS-->
     <script src="../js/main.js"></script>
 
 </body>
-
+<script>
+$(document).ready( function () {
+    $('#Tabla-Producción').DataTable();
+		$('.js-example-basic-single').select2();
+} );
+</script>
 </html>
 <!-- end document-->
+
 ?>
