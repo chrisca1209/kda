@@ -55,9 +55,10 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="../images/logo.jpg" alt="" width="180px"/>
+                    <br><br><br><br><img src="../images/kda1.png" alt="" width="180px"/>
                 </a>
             </div>
+            <br><br><br>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
@@ -65,56 +66,69 @@
                             <a class="js-arrow" href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Productos</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class=" has-sub">
-                                    <a href="registro_producto.php">Registrar Nuevo Producto</a>
-                                </li>
-                                <li>
-                                    <a href="ver_producto.php">Ver Productos Existentes</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="  has-sub">
-                           <a class="js-arrow" href="#">
-                                <i class="fas fa-table"></i>Ventas</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class="  has-sub">
-                                    <a href="registrar_venta.php">Registrar venta</a>
-                                </li>
-                                <li>
-                                   <a href="historial_de_ventas.php">Historial de ventas</a>
-                                </li>
-                            </ul>
-                        </li>
+						<?php 
+                        if($_SESSION['id_roluser'] == 1){
+                            echo 
+                            '
+                            <li class=" has-sub">
+                                <a class="js-arrow" href="verma.php">
+                                    <i class="fas fa-table"></i>Ver Máquina</a>
+                                <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li class=" has-sub">
+                                        <a href="registro_producto.php">Registrar Nuevo Producto</a>
+                                    </li>
+                                    <li>
+                                        <a href="ver_producto.php">Ver Productos Existentes</a>
+                                    </li>
+                                </ul>-->
+                             </li>';
+                            }
+                            ?>
+                        <li class=" has-sub">
+                               <a class="js-arrow" href="#">
+                                    <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li class="  has-sub">
+                                        <a href="linea1.php">Línea 1</a>
+                                    </li>
+                                    <li>
+                                       <a href="linea2.php">Línea 2</a>
+                                    </li>
+                                    <li>
+                                       <a href="linea3.php">Línea 3</a>
+                                    </li>
+                                </ul>
+                            </li>
 						
-						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Empleados</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li >
-                                    <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                </li>
-                                <li class=" has-sub">
-                                    <a href="ver_empleado.php">Ver Empleado</a>
-                                </li>
-                            </ul>
-                        </li>
-						
-						<li class=" active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Proveedores</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class=" has-sub">
-                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                </li>
-                                <li>
-                                    <a href="ver_proveedor.php">Ver Proveedores</a>
-                                </li>
-                            </ul>
-                        </li>
+						<?php 
+                                if($_SESSION['id_roluser'] == 1){
+                                    echo
+                                    '<li class=" has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="far fa-check-square"></i>Supervisores</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <!--<li >
+                                                <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
+                                            </li>-->
+                                            <li class=" has-sub">
+                                                <a href="ver_supervisor.php">Ver Supervisor</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="active has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-star"></i>Proveedores.</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li class="  has-sub">
+                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                            </li>
+                                            <li>
+                                                <a href="ver_proveedor.php">Ver Proveedores</a>
+                                            </li>
+                                        </ul>
+                                    </li>';
+                                }
+                            ?>
                     </ul>
                 </nav>
             </div>
@@ -130,12 +144,12 @@
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
+                                <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button>-->
                             </form>
                             <div class="header-button">
-                                <div class="noti-wrap">
+                                <!--<div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>
@@ -246,11 +260,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="../images/logo.jpg" alt="" width="300px" />
+                                            <img src="../images/user.png" alt="" width="300px" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
@@ -258,7 +272,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="../images/logo.jpg" alt="" width="300px" />
+                                                    <img src="../images/kda1.png" alt="" width="300px" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -300,10 +314,9 @@
 								
 								while($r=mysqli_fetch_array($consulta_genero)){
 									$id=$r['id_proveedor'];
-									$nomprove=$r['nombre'];
+									$nomprove=$r['nombre_proveedor'];
 									$telefono=$r['telefono'];
 									$correo=$r['correo'];
-									$estadorepu=$r['estado_republica'];
 								}
 							
 							?>
@@ -318,8 +331,6 @@
 									<br><br>
 									<label>Correo: </label>	<input type="text" name="correo" value="<?php echo $correo; ?>" style="width:220px" placeholder="	Correo"/>
 									<br><br>
-									<label>Estado de Origen: </label>	<input type="text" name="estadoori" value="<?php echo $estadorepu; ?>" style="width:220px" required="required" placeholder="	Nombre_Estado"/>
-									<br><br>
 									<div class="overview-wrap">
 										<h3>¿Desea Actualizar el registro?</h3>
 										<input type="submit" class="au-btn au-btn-icon au-btn--blue" name="Si" value="Guardar">
@@ -332,11 +343,11 @@
 						</div>
 						<br>
                         <div class="row">
-                            <div class="col-md-12">
+                            <!--<div class="col-md-12">
                                 <div class="copyright">
                                     <p>Copyright © 2019 Business Technology. All rights reserved. Template by <a href="#">Business Technology</a>.</p>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -381,11 +392,10 @@
 	@$nomprove=$_POST['nomprove'];
 	@$telefono=$_POST['telefono'];
 	@$correo=$_POST['correo'];
-	@$estadoori=$_POST['estadoori'];
 	
 		if(isset($id)){
 			//$insertar=mysqli_query($conexion,"update producto set nombre='$nomprodu', color='$color', talla='$talla', estado_origen='$estadoori', id_proveedor='$proveedor', id_categoria='$categoria',precio='$precioad', gasto_indi='$gastoin' where id_producto='$id';");
-			$sql = 'update proveedor set nombre = "'.$nomprove.'", telefono="'.$telefono.'", correo = "'.$correo.'", estado_republica="'.$estadoori.'" where id_proveedor='.$id.';';
+			$sql = 'update proveedor set nombre_proveedor = "'.$nomprove.'", telefono="'.$telefono.'", correo = "'.$correo.'" where id_proveedor='.$id.';';
 			echo "Mi SQL es: ".$sql;
 			$insertar = mysqli_query($conexion,$sql);
 				if($insertar){

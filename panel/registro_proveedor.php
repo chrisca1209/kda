@@ -54,9 +54,10 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="../images/kda1.png" alt="" width="180px"/>
+                    <br><br><br><br><img src="../images/kda1.png" alt="" width="180px"/>
                 </a>
             </div>
+            <br><br><br>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
@@ -64,56 +65,69 @@
                             <a class="js-arrow" href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Productos</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class=" has-sub">
-                                    <a href="registro_producto.php">Registrar Nuevo Producto</a>
-                                </li>
-                                <li>
-                                    <a href="ver_producto.php">Ver Productos Existentes</a>
-                                </li>
-                            </ul>
-                        </li>
+						<?php 
+                        if($_SESSION['id_roluser'] == 1){
+                            echo 
+                            '
+                            <li class=" has-sub">
+                                <a class="js-arrow" href="verma.php">
+                                    <i class="fas fa-table"></i>Ver Máquina</a>
+                                <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li class=" has-sub">
+                                        <a href="registro_producto.php">Registrar Nuevo Producto</a>
+                                    </li>
+                                    <li>
+                                        <a href="ver_producto.php">Ver Productos Existentes</a>
+                                    </li>
+                                </ul>-->
+                             </li>';
+                            }
+                            ?>
                         <li class=" has-sub">
-                           <a class="js-arrow" href="#">
-                                <i class="fas fa-table"></i>Ventas</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class="  has-sub">
-                                    <a href="registrar_venta.php">Registrar venta</a>
-                                </li>
-                                <li>
-                                   <a href="historial_de_ventas.php">Historial de ventas</a>
-                                </li>
-                            </ul>
-                        </li>
+                               <a class="js-arrow" href="#">
+                                    <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li class="  has-sub">
+                                        <a href="linea1.php">Línea 1</a>
+                                    </li>
+                                    <li>
+                                       <a href="linea2.php">Línea 2</a>
+                                    </li>
+                                    <li>
+                                       <a href="linea3.php">Línea 3</a>
+                                    </li>
+                                </ul>
+                            </li>
 						
-						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Empleados</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class=" has-sub">
-                                    <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                </li>
-                                <li>
-                                    <a href="ver_empleado.php">Ver Empleado</a>
-                                </li>
-                            </ul>
-                        </li>
-						
-						<li class=" active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Proveedores</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class=" active has-sub">
-                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                </li>
-                                <li>
-                                    <a href="ver_proveedor.php">Ver Proveedores</a>
-                                </li>
-                            </ul>
-                        </li>
+						<?php 
+                                if($_SESSION['id_roluser'] == 1){
+                                    echo
+                                    '<li class=" has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="far fa-check-square"></i>Supervisores</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <!--<li >
+                                                <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
+                                            </li>-->
+                                            <li class=" has-sub">
+                                                <a href="ver_supervisor.php">Ver Supervisor</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="active has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-star"></i>Proveedores.</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li class="active has-sub">
+                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                            </li>
+                                            <li>
+                                                <a href="ver_proveedor.php">Ver Proveedores</a>
+                                            </li>
+                                        </ul>
+                                    </li>';
+                                }
+                            ?>
                     </ul>
                 </nav>
             </div>
@@ -190,8 +204,6 @@
 									<br><br>
 									<label>Correo: </label>	<input type="email" name="correo" style="width:220px" placeholder="	ejemplo@gmail.com"/>
 									<br><br>
-									<label>Estado de Origen: </label>	<input type="text" name="estadoorig" style="width:220px" required="required" placeholder="	Nombre_Estado"/>
-									<br><br>
 									<div class="overview-wrap">
 										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
 											Guardar
@@ -201,11 +213,11 @@
 						</div>
 						<br>
                         <div class="row">
-                            <div class="col-md-12">
+                            <!--<div class="col-md-12">
                                 <div class="copyright">
                                     <p>Copyright © 2019 Business Technology. All rights reserved. Template by <a href="#">Business Technology</a>.</p>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -251,12 +263,11 @@
 	@$nomprove = $_POST['nomprove'];
 	@$tel = $_POST['telefono'];
 	@$correo = $_POST['correo'];
-	@$estadoorig = $_POST['estadoorig'];
 	
 	
-	if(isset($nomprove) and isset($tel) and isset($correo) and isset($estadoorig))
+	if(isset($nomprove) and isset($tel) and isset($correo))
 	{
-		$insertar=mysqli_query($conexion,"insert into proveedor values(NULL,'$nomprove','$tel','$correo','$estadoorig');");
+		$insertar=mysqli_query($conexion,"insert into proveedor values(NULL,'$nomprove','$tel','$correo');");
 		    if($insertar){
                 echo"<script>alert('Datos Guardados Correctamente'); window.location='ver_proveedor.php'</script>";
             }else{
