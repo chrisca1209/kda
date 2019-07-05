@@ -29,7 +29,7 @@
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="../images/kda1.ico" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -121,9 +121,9 @@
                                         <a class="js-arrow" href="#">
                                             <i class="fas fa-star"></i>Proveedores.</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <li class="has-sub">
-                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                            </li>
+                                            <!--<li class="  has-sub">
+                                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                                </li>-->
                                             <li class="active">
                                                 <a href="ver_proveedor.php">Ver Proveedores</a>
                                             </li>

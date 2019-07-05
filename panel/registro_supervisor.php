@@ -1,6 +1,5 @@
 <?php 
   session_start();
-  include("../adm/conexion.php");
   if (!isset($_SESSION['sesvar'])) {
     echo '
         <script>
@@ -8,6 +7,7 @@
         </script>
     ';
 }//end of if
+include ('../adm/conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,14 +21,14 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Eliminar Datos de Supervisor</title>
+    <title>Registro de Supervisores</title>
 
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="../images/kda1.ico" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -62,11 +62,11 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                       <li class=" has-sub">
-                                <a class="js-arrow" href="./dashboard.php">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="./dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            </li>
-                            <?php 
+                        </li>
+						<?php 
                         if($_SESSION['id_roluser'] == 1){
                             echo 
                             '
@@ -84,7 +84,7 @@
                              </li>';
                             }
                             ?>
-                           <li class=" has-sub">
+                        <li class=" has-sub">
                                <a class="js-arrow" href="#">
                                     <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -99,15 +99,19 @@
                                     </li>
                                 </ul>
                             </li>
-                            <?php 
+						
+						<?php 
                                 if($_SESSION['id_roluser'] == 1){
                                     echo
                                     '<li class="active has-sub">
                                         <a class="js-arrow" href="#">
                                             <i class="far fa-check-square"></i>Supervisores</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <li class="active has-sub">
+                                            <!--<li class="active has-sub">
                                                 <a href="registro_supervisor.php">Registrar Nuevo Supervisor</a>
+                                            </li>-->
+                                            <li class=" has-sub">
+                                                    <a href="nominasuper.php">Nómina</a>
                                             </li>
                                             <li class=" has-sub">
                                                 <a href="ver_supervisor.php">Ver Supervisor</a>
@@ -118,9 +122,9 @@
                                         <a class="js-arrow" href="#">
                                             <i class="fas fa-star"></i>Proveedores.</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <!--<li class="  has-sub">
-                                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                                </li>-->
+                                            <li class="has-sub">
+                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                            </li>
                                             <li>
                                                 <a href="ver_proveedor.php">Ver Proveedores</a>
                                             </li>
@@ -301,42 +305,22 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Eliminar Supervisor</h2>
+                                    <h2 class="title-1">Registro de Supervisores</h2>
                                 </div>
                             </div>
                         </div>
 						<div>
-							<?php  
-								include("../adm/conexion.php");
-								$id_g=$_GET['id'];
-								$consulta_genero=mysqli_query($conexion,"select * from supervisor where id_supervisor='$id_g';");
-								
-								while($r=mysqli_fetch_array($consulta_genero)){
-									$id=$r[0];
-									$nomemp=$r[1];
-									$app=$r[2];
-									$apm=$r[3];
-								}
-							
-							?>
-							<br><br>
-							<form method="POST"> 
-								
-									<label hidden="hidden">ID: </label>	<input type="text" name="idemp" value="<?php echo $id; ?>" style="width:220px" readonly="readonly" placeholder="	Nombre_Producto" hidden="hidden"/>
+							<form action="" method="POST" enctype="multipart/form-data"> 
 									<br><br>
-									<label>Nombre: </label>	<input type="text" name="nomemp" value="<?php echo $nomemp; ?>" style="width:220px" readonly="readonly" placeholder="	Nombre_Proveedor"/>
+									<label>Nombre: </label>	<input type="text" name="nomemp" style="width:220px" required="required" placeholder="	Nombre_Empleado"/>
 									<br><br>
-									<label>Apellido Paterno: </label>	<input type="text" name="app" value="<?php echo $app; ?>" style="width:220px" readonly="readonly" placeholder="	Nombre_Proveedor"/>
+									<label>Apellido Paterno: </label>	<input type="text" name="app" style="width:220px" required="required" placeholder="	Apellido_Paterno"/>
 									<br><br>
-									<label>Apellido Materno: </label>	<input type="text" name="apm" value="<?php echo $apm; ?>" style="width:220px" readonly="readonly" placeholder="	Nombre_Proveedor"/>
+									<label>Apellido Materno: </label>	<input type="text" name="apm" style="width:220px" required="required" placeholder="	Apellido_Materno"/>
 									<br><br>
 									<div class="overview-wrap">
-										<h3>¿Desea Eliminar todo el registro?</h3>
-										<button type="submit" class="au-btn au-btn-icon au-btn--blue" name="Si" value="Eliminar">
-											Si
-										</button>
-										<button type="button" class="au-btn au-btn-icon au-btn--blue" name="no" value="no" onclick="javascript:window.location='ver_supervisor.php';">
-											No
+										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
+											Guardar
 										</button>
 									</div>
 							</form>
@@ -387,23 +371,22 @@
 </html>
 <!-- end document-->
 <?php
+
+	include ('../adm/conexion.php');
 	
-	@$id=$_POST['idemp'];
-	@$nomemp=$_POST['nomemp'];
-	@$app=$_POST['app'];
-	@$apm=$_POST['apm'];
+	@$nomemp = $_POST['nomemp'];
+	@$ape_p = $_POST['app'];
+	@$ape_m = $_POST['apm'];
 	
-		if(isset($id)){
-			//$insertar=mysqli_query($conexion,"update producto set nombre='$nomprodu', color='$color', talla='$talla', estado_origen='$estadoori', id_proveedor='$proveedor', id_categoria='$categoria',precio='$precioad', gasto_indi='$gastoin' where id_producto='$id';");
-			$sql = 'delete from supervisor where id_supervisor='.$id.'';
-			echo "Mi SQL es: ".$sql;
-			$eliminar = mysqli_query($conexion,$sql);
-				if($eliminar){
-					echo"<script>alert('Datos Borrados Correctamente');
-					window.location='ver_supervisor.php';</script>";
+	
+	if(isset($nomemp) and isset($ape_p) and isset($ape_m))
+	{
+			$insertar=mysqli_query($conexion,"insert into supervisor values(NULL,'$nomemp','$ape_p','$ape_m');");
+				if($insertar){
+					echo"<script>alert('Datos Guardados Correctamente'); window.location='ver_supervisor.php'</script>";
 				}else{
-					echo"<script>alert('Datos no eliminados en la Base de datos \n Vuelve a intentarlo')</script>";
-				}
-		}
+					echo"<script>alert('Datos no insertados en la Base de datos \n Vuelve a intentarlo')</script>";
+                } 
+    }
 	mysqli_close($conexion);
 ?>

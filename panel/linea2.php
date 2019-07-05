@@ -72,7 +72,7 @@ include ('../adm/conexion.php');
                             echo 
                             '
                             <li class=" has-sub">
-                                <a class="js-arrow" href="verma.php">
+                                <a class="" href="verma.php">
                                     <i class="fas fa-table"></i>Ver Máquina</a>
                                 <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li class=" has-sub">
@@ -107,9 +107,9 @@ include ('../adm/conexion.php');
                                         <a class="js-arrow" href="#">
                                             <i class="far fa-check-square"></i>Supervisores</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <!--<li >
-                                                <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                            </li>-->
+                                            <li class=" has-sub">
+                                                    <a href="nominasuper.php">Nómina</a>
+                                            </li>
                                             <li class=" has-sub">
                                                 <a href="ver_supervisor.php">Ver Supervisor</a>
                                             </li>

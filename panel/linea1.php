@@ -72,16 +72,8 @@ include ('../adm/conexion.php');
                             echo 
                             '
                             <li class=" has-sub">
-                                <a class="js-arrow" href="verma.php">
+                                <a class="" href="verma.php">
                                     <i class="fas fa-table"></i>Ver Máquina</a>
-                                <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li class=" has-sub">
-                                        <a href="registro_producto.php">Registrar Nuevo Producto</a>
-                                    </li>
-                                    <li>
-                                        <a href="ver_producto.php">Ver Productos Existentes</a>
-                                    </li>
-                                </ul>-->
                              </li>';
                             }
                             ?>
@@ -89,7 +81,7 @@ include ('../adm/conexion.php');
                            <a class="js-arrow" href="#">
                                 <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class="  has-sub">
+                                <li class="active  has-sub">
                                     <a href="linea1.php">Línea 1</a>
                                 </li>
                                 <li>
@@ -107,9 +99,9 @@ include ('../adm/conexion.php');
                                         <a class="js-arrow" href="#">
                                             <i class="far fa-check-square"></i>Supervisores</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <!--<li >
-                                                <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                            </li>-->
+                                            <li class=" has-sub">
+                                                    <a href="nominasuper.php">Nómina</a>
+                                            </li>
                                             <li class=" has-sub">
                                                 <a href="ver_supervisor.php">Ver Supervisor</a>
                                             </li>
@@ -303,9 +295,11 @@ include ('../adm/conexion.php');
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">Registro de Produción.<br>Linea de Moises</h2>
+                                    
                                 </div>
                             </div>
                         </div>
+                        <br><br>
 												<div class="row"> 
 						<div class="col-md-7">
 							<div class="overview-wrap">

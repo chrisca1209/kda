@@ -28,7 +28,7 @@
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="../images/kda1.ico" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -119,9 +119,9 @@
                                         <a class="js-arrow" href="#">
                                             <i class="fas fa-star"></i>Proveedores.</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <li class="  has-sub">
-                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                            </li>
+                                            <!--<li class="  has-sub">
+                                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                                </li>-->
                                             <li>
                                                 <a href="ver_proveedor.php">Ver Proveedores</a>
                                             </li>
@@ -333,7 +333,7 @@
 									<br><br>
 									<div class="overview-wrap">
 										<h3>¿Desea Actualizar el registro?</h3>
-										<input type="submit" class="au-btn au-btn-icon au-btn--blue" name="Si" value="Guardar">
+										<input type="submit" class="au-btn au-btn-icon au-btn--blue" name="Si" value="Si">
 											<!--Si-->
 										<button type="button" class="au-btn au-btn-icon au-btn--blue" name="no" value="no" onclick="javascript:window.location='ver_proveedor.php';">
 											No

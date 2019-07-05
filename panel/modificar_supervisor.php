@@ -21,7 +21,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Modificar Empleado</title>
+    <title>Modificar Datos de Supervisor</title>
 
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
@@ -55,59 +55,83 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <img src="../images/logo.jpg" alt="" width="180px"/>
+                    <br><br><br><br><img src="../images/kda1.png" alt="" width="180px"/>
                 </a>
             </div>
+            <br><br><br>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="./dashboard.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        </li>
-						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Productos</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                           <li class=" has-sub">
+                                    <a class="js-arrow" href="./dashboard.php">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                </li>
+                                <?php 
+                            if($_SESSION['id_roluser'] == 1){
+                                echo 
+                                '
                                 <li class=" has-sub">
-                                    <a href="registro_producto.php">Registrar Nuevo Producto</a>
+                                    <a class="js-arrow" href="verma.php">
+                                        <i class="fas fa-table"></i>Ver Máquina</a>
+                                    <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li class=" has-sub">
+                                            <a href="registro_producto.php">Registrar Nuevo Producto</a>
+                                        </li>
+                                        <li>
+                                            <a href="ver_producto.php">Ver Productos Existentes</a>
+                                        </li>
+                                    </ul>-->
+                                 </li>';
+                                }
+                                ?>
+                               <li class=" has-sub">
+                                   <a class="js-arrow" href="#">
+                                        <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li class="  has-sub">
+                                            <a href="linea1.php">Línea 1</a>
+                                        </li>
+                                        <li>
+                                           <a href="linea2.php">Línea 2</a>
+                                        </li>
+                                        <li>
+                                           <a href="linea3.php">Línea 3</a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
-                                    <a href="ver_producto.php">Ver Productos Existentes</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="./venta.php">
-                                <i class="fas fa-table"></i>Ventas</a>
-                        </li>
-						
-						<li class=" active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Empleados</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li >
-                                    <a href="registro_empleado.php">Registrar Nuevo Empleado</a>
-                                </li>
-                                <li class=" has-sub">
-                                    <a href="ver_empleado.php">Ver Empleado</a>
-                                </li>
-                            </ul>
-                        </li>
-						
-						<li class=" has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-chart-bar"></i>Proveedores</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class=" has-sub">
-                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                </li>
-                                <li>
-                                    <a href="ver_proveedor.php">Ver Proveedores</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                                <?php 
+                                    if($_SESSION['id_roluser'] == 1){
+                                        echo
+                                        '<li class="active has-sub">
+                                            <a class="js-arrow" href="#">
+                                                <i class="far fa-check-square"></i>Supervisores</a>
+                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                                <!--<li >
+                                                    <a href="registro_supervisor.php">Registrar Nuevo Supervisor</a>
+                                                </li>-->
+                                                <li class=" has-sub">
+                                                    <a href="nominasuper.php">Nómina</a>
+                                                </li>
+                                                <li class="active has-sub">
+                                                    <a href="ver_supervisor.php">Ver Supervisor</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub">
+                                            <a class="js-arrow" href="#">
+                                                <i class="fas fa-star"></i>Proveedores.</a>
+                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                                <!--<li class="  has-sub">
+                                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                                </li>-->
+                                                <li>
+                                                    <a href="ver_proveedor.php">Ver Proveedores</a>
+                                                </li>
+                                            </ul>
+                                        </li>';
+                                    }
+                                ?>
+                        </ul>
                 </nav>
             </div>
         </aside>
@@ -122,12 +146,12 @@
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
+                                <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button>-->
                             </form>
                             <div class="header-button">
-                                <div class="noti-wrap">
+                                <!--<div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>
@@ -238,11 +262,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="../images/logo.jpg" alt="" width="300px" />
+                                            <img src="../images/user.png" alt="" width="300px" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
@@ -250,7 +274,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="../images/logo.jpg" alt="" width="300px" />
+                                                    <img src="../images/kda1.png" alt="" width="300px" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -280,7 +304,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Modificar Proveedor</h2>
+                                    <h2 class="title-1">Modificar Supervisor</h2>
                                 </div>
                             </div>
                         </div>
@@ -288,17 +312,13 @@
 							<?php  
 								include("../adm/conexion.php");
 								$id_g=$_GET['id'];
-								$consulta_genero=mysqli_query($conexion,"select * from empleado where id_empleado='$id_g';");
+								$consulta_genero=mysqli_query($conexion,"select * from supervisor where id_supervisor='$id_g';");
 								
 								while($r=mysqli_fetch_array($consulta_genero)){
-									$id=$r['id_empleado'];
-									$nomemp=$r['nombre'];
-									$app=$r['ap_p'];
-									$apm=$r['ap_m'];
-									$correo=$r['correo'];
-									$telefono=$r['telefono'];
-									$calle=$r['calle'];
-									$numero=$r['numero'];
+									$id=$r[0];
+									$nomemp=$r[1];
+									$app=$r[2];
+									$apm=$r[3];
 								}
 							
 							?>
@@ -313,20 +333,12 @@
 									<br><br>
 									<label>Apellido Materno: </label>	<input type="text" name="apm" value="<?php echo $apm; ?>" style="width:220px"  placeholder="	Nombre_Proveedor"/>
 									<br><br>
-									<label>Correo: </label>	<input type="text" name="correo" value="<?php echo $correo; ?>" style="width:220px" placeholder="	Correo"/>
-									<br><br>
-									<label>Telefono: </label>	<input type="text" name="telefono" value="<?php echo $telefono; ?>" style="width:220px" placeholder="	Telefono"/>
-									<br><br>
-									<label>Calle: </label>	<input type="text" name="calle" value="<?php echo $calle; ?>" style="width:220px"  placeholder="	Nombre_Estado"/>
-									<br><br>
-									<label>Número: </label>	<input type="text" name="numero" value="<?php echo $numero; ?>" style="width:220px" placeholder="	Nombre_Estado"/>
-									<br><br>
 									<div class="overview-wrap">
 										<h3>¿Desea Actualizar todo el registro?</h3>
 										<button type="submit" class="au-btn au-btn-icon au-btn--blue" name="Si" value="Guardar">
 											Si
 										</button>
-										<button type="button" class="au-btn au-btn-icon au-btn--blue" name="no" value="no" onclick="javascript:window.location='ver_empleado.php';">
+										<button type="button" class="au-btn au-btn-icon au-btn--blue" name="no" value="no" onclick="javascript:window.location='ver_supervisor.php';">
 											No
 										</button>
 									</div>
@@ -335,9 +347,9 @@
 						<br>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="copyright">
+                                <!--<div class="copyright">
                                     <p>Copyright © 2019 Business Technology. All rights reserved. Template by <a href="#">Business Technology</a>.</p>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -383,18 +395,14 @@
 	@$nomemp=$_POST['nomemp'];
 	@$app=$_POST['app'];
 	@$apm=$_POST['apm'];
-	@$correo=$_POST['correo'];
-	@$telefono=$_POST['telefono'];
-	@$calle=$_POST['calle'];
-	@$numero=$_POST['numero'];
 	
 		if(isset($id)){
 			//$insertar=mysqli_query($conexion,"update producto set nombre='$nomprodu', color='$color', talla='$talla', estado_origen='$estadoori', id_proveedor='$proveedor', id_categoria='$categoria',precio='$precioad', gasto_indi='$gastoin' where id_producto='$id';");
-			$sql = 'update empleado set nombre = "'.$nomemp.'", ap_p="'.$app.'", ap_m="'.$apm.'", correo = "'.$correo.'", telefono="'.$telefono.'", calle="'.$calle.'", numero = "'.$numero.'" where id_empleado='.$id.';';
+			$sql = 'update supervisor set nombre = "'.$nomemp.'", ap_paterno="'.$app.'", ap_materno="'.$apm.'" where id_supervisor='.$id.';';
 			echo "Mi SQL es: ".$sql;
 			$insertar = mysqli_query($conexion,$sql);
 				if($insertar){
-					echo"<script>alert('Datos Actualizados Correctamente'); window.location='ver_empleado.php'</script>";
+					echo"<script>alert('Datos Actualizados Correctamente'); window.location='ver_supervisor.php'</script>";
 				}else{
 					echo"<script>alert('Datos no insertados en la Base de datos \n Vuelve a intentarlo')</script>";
 				}
