@@ -84,20 +84,31 @@
                             }
                             ?>
                         <li class=" has-sub">
-                               <a class="js-arrow" href="#">
-                                    <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
-                                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li class="  has-sub">
-                                        <a href="linea1.php">Línea 1</a>
+                                       <a class="js-arrow" href="#">
+                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <?php
+                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
+                                                        echo '
+                                                        <li class="  has-sub">
+                                                            <a href="linea1.php">Línea 1</a>
+                                                        </li>';
+                                                }
+                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 5))){
+                                                        echo '
+                                                        <li>
+                                                           <a href="linea2.php">Línea 2</a>
+                                                        </li>';
+                                               }
+                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] ==4))){
+                                                   echo '
+                                                        <li>
+                                                           <a href="linea3.php">Línea 3</a>
+                                                        </li>';
+                                               }
+                                        ?>
+                                        </ul>
                                     </li>
-                                    <li>
-                                       <a href="linea2.php">Línea 2</a>
-                                    </li>
-                                    <li>
-                                       <a href="linea3.php">Línea 3</a>
-                                    </li>
-                                </ul>
-                            </li>
 						
 						<?php 
                                 if($_SESSION['id_roluser'] == 1){
