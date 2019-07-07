@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2019 a las 18:49:46
+-- Tiempo de generación: 07-07-2019 a las 21:58:50
 -- Versión del servidor: 10.1.40-MariaDB
 -- Versión de PHP: 7.1.29
 
@@ -201,6 +201,26 @@ CREATE TABLE `produccion` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `proveedor`
+--
+
+CREATE TABLE `proveedor` (
+  `id_proveedor` int(11) NOT NULL,
+  `nombre_proveedor` varchar(45) NOT NULL,
+  `telefono` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id_proveedor`, `nombre_proveedor`, `telefono`, `correo`) VALUES
+(1, 'Juan', '246-105-9503', 'juan@proveedor.com');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `supervisor`
 --
 
@@ -216,9 +236,9 @@ CREATE TABLE `supervisor` (
 --
 
 INSERT INTO `supervisor` (`id_supervisor`, `Nombre`, `ap_paterno`, `ap_materno`) VALUES
-(1, 'Moises', 'Pérez', 'Arce'),
-(2, 'Carolina', 'Arroyo', 'Hernández'),
-(3, 'Juana', 'Deita', 'Sánchez'),
+(1, 'Moises', 'Perez', 'Arce'),
+(2, 'Carolina', 'Arroyo', 'Hernandez'),
+(3, 'Juana', 'Deita', 'Sanchez'),
 (4, 'Taller', '', '');
 
 -- --------------------------------------------------------
@@ -243,7 +263,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `ap_paterno`, `ap_materno`, `email`, `password`, `id_roluser`) VALUES
 (1, 'Administrador', 'Admin', 'Admin', 'administrador@kda.com', 'ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270', 1),
-(2, 'Empleado', 'Emp', 'Emp', 'empleado@kda.com', '0f0955f7fd0f7fe99be2bbf5a314bea63f486c0d97b38ba4f35b7e2c51a492fc', 2);
+(2, 'Empleado', 'Emp', 'Emp', 'empleado@kda.com', '0f0955f7fd0f7fe99be2bbf5a314bea63f486c0d97b38ba4f35b7e2c51a492fc', 2),
+(3, 'Moises', 'Pérez', 'Arce', 'moises@kda.com', '5a5ce99ba7a482c8694a1634f5e15c8ab9635ef1ccc8ad23d0a1f7058cd52830', 3),
+(4, 'Carolina', 'Arroyo', 'Herández', 'carolina@kda.com', '70715745f1c1126c644b041fe8962b88ccd873ffada8fee15912238602e80445', 4),
+(5, 'Juana', 'Deita', 'Sánchez', 'juana@kda.com', '5e026d60d4f0f507116e10f3cd0e676f0b4687cc1320382360932957c3699f94', 5);
 
 --
 -- Índices para tablas volcadas
@@ -266,6 +289,12 @@ ALTER TABLE `maquinas`
 --
 ALTER TABLE `produccion`
   ADD PRIMARY KEY (`id_produccion`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`id_proveedor`);
 
 --
 -- Indices de la tabla `supervisor`
@@ -302,6 +331,12 @@ ALTER TABLE `produccion`
   MODIFY `id_produccion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `supervisor`
 --
 ALTER TABLE `supervisor`
@@ -311,7 +346,7 @@ ALTER TABLE `supervisor`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

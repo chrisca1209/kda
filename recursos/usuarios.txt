@@ -1,3 +1,7 @@
 administrador@kda.com		administrador1234
 
+moises@kda.com			moises123
+carolina@kda.com		carolina123
+juana@kda.com			juana123
+
 empleado@kda.com		empleado1234
