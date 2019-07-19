@@ -28,7 +28,7 @@ include ('../adm/conexion.php');
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-	<link rel="icon" href="../images/icon/logo.ico" type="image/ico">
+	<link rel="icon" href="../images/kda1.ico" type="image/ico">
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -305,13 +305,13 @@ include ('../adm/conexion.php');
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Registro de Produción.<br>Linea de Moises</h2>
+                                    <h2 class="title-1">Registro de Producción.<br>Linea de Moises</h2>
                                     
                                 </div>
                             </div>
                         </div>
                         <br><br>
-												<div class="row"> 
+    					<div class="row"> 
 						<div class="col-md-7">
 							<div class="overview-wrap">
 										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#modal-cantidad-dia">
