@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2019 a las 21:58:50
+-- Tiempo de generación: 19-07-2019 a las 22:22:27
 -- Versión del servidor: 10.1.40-MariaDB
 -- Versión de PHP: 7.1.29
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `asistencia`
+--
+
+CREATE TABLE `asistencia` (
+  `id_asistencia` int(11) NOT NULL,
+  `horaEntrada` time NOT NULL,
+  `horaSalida` time NOT NULL,
+  `id_supervisor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `asistencia`
+--
+
+INSERT INTO `asistencia` (`id_asistencia`, `horaEntrada`, `horaSalida`, `id_supervisor`) VALUES
+(1, '00:00:00', '00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `mantenimiento`
 --
 
@@ -40,7 +60,7 @@ CREATE TABLE `mantenimiento` (
 --
 
 INSERT INTO `mantenimiento` (`id_mantenimiento`, `No_interno_maquina`, `Descripcion`, `Fecha`) VALUES
-(1, 1, 'Hola', '2019-06-26');
+(1, 1, 'bjsdbjhvbsdjv', '2019-07-18');
 
 -- --------------------------------------------------------
 
@@ -50,15 +70,15 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `No_interno_maquina`, `Descripc
 
 CREATE TABLE `maquinas` (
   `id_maquina` int(11) NOT NULL,
-  `No_consecutivo` int(11) NOT NULL,
-  `No_interno_maquina` int(11) NOT NULL,
+  `No_consecutivo` int(5) NOT NULL,
+  `No_interno_maquina` int(5) NOT NULL,
   `Tipo_maquina` varchar(50) NOT NULL,
   `Marca` varchar(50) NOT NULL,
   `Modelo` varchar(100) NOT NULL,
   `No_serie` varchar(50) NOT NULL,
   `Propiedad` varchar(10) NOT NULL,
   `Supervisor` varchar(50) NOT NULL,
-  `id_supervisor` int(11) NOT NULL
+  `id_supervisor` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -181,10 +201,21 @@ INSERT INTO `maquinas` (`id_maquina`, `No_consecutivo`, `No_interno_maquina`, `T
 (113, 113, 120, 'RECTA ELECTRONICA', 'TAIKO', 'TK-505-50', '94105546', 'KDA', 'Juana', 3),
 (114, 114, 121, 'RECTA', 'SUNSTAR', 'KM-235', '32088050(27)', 'KDA', 'Carolina', 2),
 (115, 115, 122, 'RECTA', 'SUNSTAR', 'KM-235', '33032330(14)', 'KDA', 'Moises', 1),
-(116, 116, 123, 'RECTA', 'SUNSTAR', 'KM-235', '33039919(96)', 'KDA', 'Moises', 1),
-(119, 0, 0, 'Tipo_maquina', 'Marca', 'Modelo', 'No_serie', 'Propiedad', 'Supervisor', 0),
-(120, 0, 0, '', '', '', '', '', '', 0),
-(121, 0, 0, '', '', '', '', '', '', 0);
+(116, 116, 123, 'RECTA', 'SUNSTAR', 'KM-235', '33039919(96)', 'KDA', 'Moises', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagos_supervisores`
+--
+
+CREATE TABLE `pagos_supervisores` (
+  `id_pagos` int(11) NOT NULL,
+  `id_supervisor` int(11) NOT NULL,
+  `hrs_trabajadas` decimal(10,2) NOT NULL,
+  `pago_por_hora` decimal(10,2) NOT NULL,
+  `total_pagar` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -228,18 +259,19 @@ CREATE TABLE `supervisor` (
   `id_supervisor` int(11) NOT NULL,
   `Nombre` varchar(45) NOT NULL,
   `ap_paterno` varchar(45) DEFAULT NULL,
-  `ap_materno` varchar(45) DEFAULT NULL
+  `ap_materno` varchar(45) DEFAULT NULL,
+  `hrs_trabajadas` varchar(65) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `supervisor`
 --
 
-INSERT INTO `supervisor` (`id_supervisor`, `Nombre`, `ap_paterno`, `ap_materno`) VALUES
-(1, 'Moises', 'Perez', 'Arce'),
-(2, 'Carolina', 'Arroyo', 'Hernandez'),
-(3, 'Juana', 'Deita', 'Sanchez'),
-(4, 'Taller', '', '');
+INSERT INTO `supervisor` (`id_supervisor`, `Nombre`, `ap_paterno`, `ap_materno`, `hrs_trabajadas`) VALUES
+(1, 'Moises', 'Perez', 'Arce', ''),
+(2, 'Carolina', 'Arroyo', 'Hernandez', ''),
+(3, 'Juana', 'Deita', 'Sanchez', ''),
+(4, 'Taller', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -250,8 +282,8 @@ INSERT INTO `supervisor` (`id_supervisor`, `Nombre`, `ap_paterno`, `ap_materno`)
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre_usuario` varchar(45) NOT NULL,
-  `ap_paterno` varchar(45) NOT NULL,
-  `ap_materno` varchar(45) NOT NULL,
+  `ap_paterno` varchar(45) DEFAULT NULL,
+  `ap_materno` varchar(45) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(64) NOT NULL,
   `id_roluser` int(2) NOT NULL
@@ -262,15 +294,20 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `ap_paterno`, `ap_materno`, `email`, `password`, `id_roluser`) VALUES
-(1, 'Administrador', 'Admin', 'Admin', 'administrador@kda.com', 'ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270', 1),
-(2, 'Empleado', 'Emp', 'Emp', 'empleado@kda.com', '0f0955f7fd0f7fe99be2bbf5a314bea63f486c0d97b38ba4f35b7e2c51a492fc', 2),
-(3, 'Moises', 'Pérez', 'Arce', 'moises@kda.com', '5a5ce99ba7a482c8694a1634f5e15c8ab9635ef1ccc8ad23d0a1f7058cd52830', 3),
-(4, 'Carolina', 'Arroyo', 'Herández', 'carolina@kda.com', '70715745f1c1126c644b041fe8962b88ccd873ffada8fee15912238602e80445', 4),
-(5, 'Juana', 'Deita', 'Sánchez', 'juana@kda.com', '5e026d60d4f0f507116e10f3cd0e676f0b4687cc1320382360932957c3699f94', 5);
+(1, 'Administrador', '', '', 'administrador@kda.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 1),
+(2, 'Moises', 'Pérez', 'Arce', 'moises@kda.com', 'a702139b2203137fb0e859ca6b921138aab73a05153b9734f88782cf30e02147', 3),
+(3, 'Carolina', 'Arroyo', 'Hernández', 'carolina@kda.com', 'eb5af10f6d98cf42c5bffb11751deeaf4d106d62fde5f42d50f1d347e4aa8564', 4),
+(4, 'Juana', 'Deita', 'Sánchez', 'juana@kda.com', 'b9bb221b3a10522163ae4046ea58305f1636cd4722fed5b0c75dba33675f4970', 5);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  ADD PRIMARY KEY (`id_asistencia`);
 
 --
 -- Indices de la tabla `mantenimiento`
@@ -283,6 +320,12 @@ ALTER TABLE `mantenimiento`
 --
 ALTER TABLE `maquinas`
   ADD PRIMARY KEY (`id_maquina`);
+
+--
+-- Indices de la tabla `pagos_supervisores`
+--
+ALTER TABLE `pagos_supervisores`
+  ADD PRIMARY KEY (`id_pagos`);
 
 --
 -- Indices de la tabla `produccion`
@@ -313,6 +356,12 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
@@ -322,7 +371,13 @@ ALTER TABLE `mantenimiento`
 -- AUTO_INCREMENT de la tabla `maquinas`
 --
 ALTER TABLE `maquinas`
-  MODIFY `id_maquina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id_maquina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+
+--
+-- AUTO_INCREMENT de la tabla `pagos_supervisores`
+--
+ALTER TABLE `pagos_supervisores`
+  MODIFY `id_pagos` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `produccion`
@@ -346,7 +401,7 @@ ALTER TABLE `supervisor`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

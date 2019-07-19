@@ -270,7 +270,7 @@ include ('../adm/conexion.php');
                                             <img src="../images/user.png" alt="" width="300px" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
+                                            <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre_completo']; ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -279,7 +279,7 @@ include ('../adm/conexion.php');
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <label><?php echo $_SESSION['nombre']; ?></label>
+                                                        <label><?php echo $_SESSION['nombre_completo']; ?></label>
                                                     </h5>
                                                     <label><?php echo $_SESSION['email']; ?></label>
                                                 </div>
