@@ -402,7 +402,10 @@ include ('../adm/conexion.php');
 			</div>
 			<div class="row">
 			<div class="col-md-12">
-			<input type="number" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control">
+			<input type="number" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control"><h4>Descripción de Producción.</h4>    
+    		<input type="text" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Descripción de Producción" class="form-control">
+
+
 			</div>
 			</div>
         <p><p>
