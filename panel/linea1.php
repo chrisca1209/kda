@@ -91,13 +91,28 @@ include ('../adm/conexion.php');
                                         </ul>
                                     </li>
                         <?php 
-                                if($_SESSION['id_roluser'] == 1){
+                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
+                                            echo'
+                                                <li class=" has-sub">
+                                                    <a class="" href="asistencia.php">
+                                                    <i class="fas fa-circle"></i>Asistencia</a>
+                                                </li>
+                                            ';
+                                        }
+                                    ?>
+                                <?php 
+                                if(($_SESSION['id_roluser'] == 1)){
                                     echo
                                     '<li class=" has-sub">
                                         <a class="js-arrow" href="#">
                                             <i class="far fa-check-square"></i>Supervisores</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <li class=" has-sub">
+                                            ';
+                                }?>
+                                    <?php 
+                                if($_SESSION['id_roluser'] == 1){
+                                    echo
+                                            '<li class=" has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
                                             </li>
                                             <li class=" has-sub">

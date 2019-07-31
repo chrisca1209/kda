@@ -88,7 +88,7 @@
                                 ?>
                                <li class=" has-sub">
                                        <a class="js-arrow" href="#">
-                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
                                                if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
@@ -112,38 +112,50 @@
                                         ?>
                                         </ul>
                                     </li>
-                                <?php 
-                                    if($_SESSION['id_roluser'] == 1){
-                                        echo
-                                        '<li class="active has-sub">
-                                            <a class="js-arrow" href="#">
-                                                <i class="far fa-check-square"></i>Supervisores</a>
-                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <!--<li >
-                                                    <a href="registro_supervisor.php">Registrar Nuevo Supervisor</a>
-                                                </li>-->
+                                    <?php 
+                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
+                                            echo'
                                                 <li class=" has-sub">
+                                                    <a class="js-arrow" href="asistencia.php">
+                                                    <i class="fas fa-circle"></i>Asistencia</a>
+                                                </li>
+                                            ';
+                                        }
+                                    ?>
+                                <?php 
+                                if(($_SESSION['id_roluser'] == 1)){
+                                    echo
+                                    '<li class=" has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="far fa-check-square"></i>Supervisores</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            ';
+                                }?>
+                                    <?php 
+                                if($_SESSION['id_roluser'] == 1){
+                                    echo
+                                            '<li class=" has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
-                                                </li>
-                                                <li class="active has-sub">
-                                                    <a href="ver_supervisor.php">Ver Supervisor</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-sub">
-                                            <a class="js-arrow" href="#">
-                                                <i class="fas fa-star"></i>Proveedores.</a>
-                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <!--<li class="  has-sub">
-                                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                                </li>-->
-                                                <li>
-                                                    <a href="ver_proveedor.php">Ver Proveedores</a>
-                                                </li>
-                                            </ul>
-                                        </li>';
-                                    }
-                                ?>
+                                            </li>
+                                            <li class=" has-sub">
+                                                <a href="ver_supervisor.php">Ver Supervisor</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-star"></i>Proveedores.</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li class="  has-sub">
+                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                            </li>
+                                            <li>
+                                                <a href="ver_proveedor.php">Ver Proveedores</a>
+                                            </li>
+                                        </ul>
+                                    </li>';
+                                }
+                            ?>
                         </ul>
                 </nav>
             </div>
@@ -317,7 +329,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Vista de Empleados Existentes</h2>
+                                    <h2 class="title-1">Vista de Supervisores</h2>
                                 </div>
                             </div>
                         </div>
@@ -336,6 +348,7 @@
 									<th>Nombre</th>
 									<th>Apellido Paterno</th>
 									<th>Apellido Materno</th>
+				                    <th>Número de Línea</th>
 									<th></th>
 									<th></th>
 								</thead>
@@ -344,11 +357,14 @@
 										while(($row = mysqli_fetch_array($query_result)) != null){
 										
 											echo '<tr>
+                                            <div data-toggle="modal" data-target="#modalAsistencia" onclick="llenarDatos('.$row[1].' '.$row[2].' '.$row[3].')">
 												<td>'.$row[0].'</td>
+                                            </div>
 												<td>'.$row[1].'</td>
 												<td>'.$row[2].'</td>
-												<td>'.$row[3].'</td>
-												<td><a href=modificar_supervisor.php?id='.$row[0].'><button type="button" class="btn btn-success">Editar</button></a></td>
+												<td>'.$row[3].'</td>												
+                                                <td>'.$row[5].'</td>
+												<td><button type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#staticModal"">Editar</button></td>
 												<td><a href=eliminar_supervisor.php?id='.$row[0].'><button type="button" class="btn btn-danger">Eliminar</button></a></td>
 											</tr>';
 										}//end while
@@ -372,6 +388,100 @@
         <!-- END PAGE CONTAINER-->
 
     </div>
+    
+    <!-- Modal Section-->
+    <!-- modal static -->
+			<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+			 data-backdrop="static">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="staticModalLabel">Actualizar Datos Supervisor</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="formularioActualizarSupervisor">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <input type="hidden" name="idAct" id="idAct" value="">
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Nombre(s)</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="nombreAct" id="nombreAct" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Apellido Paterno</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="apePAct" id="apePAct" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Apellido Materno</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="apeMAct" id="apeMAct" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Número de Línea</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="numLinea" id="numLinea" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                    </div>
+						        </div>  
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" id="btnActualizarEmpleado" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="modalAsistencia" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+			 data-backdrop="static">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="staticModalLabel">Pasar Asistencia</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<center>
+					            <input type="text" id="nombreEm" name="nombreEn" class="form-control" style="text-align: center; font-size: 20px;" readonly="readonly" value="">
+				            </center>
+				        <div style="width:100;height:20px;"></div>
+				            <div class="col-md-12">
+					            <div class="row">
+                                    <div class="col-md-1">
+                                        <input type="hidden" id="idE" name="idE" value="">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <button type="button" id="btnAgregarHoraEntrada" class="btn btn-info btn-block">Agregar Hora Entrada</button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <button type="button" id="btnAgregarHoraSalida" class="btn btn-info btn-block">Agregar Hora de Salida</button>
+                                    </div>
+                                    <div class="col-md-1"></div>
+					            </div>
+				        </div>
+					<div style="width:100;height:20px;"></div>
+					<div style="width:100;height:20px;"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" id="btnActualizarEmpleado" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end modal static -->
 
     <!-- Jquery JS-->
     <script src="../vendor/jquery-3.2.1.min.js"></script>

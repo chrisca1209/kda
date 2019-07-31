@@ -130,37 +130,49 @@
                                         </ul>
                                     </li>
                                 <?php 
-                                    if($_SESSION['id_roluser'] == 1){
-                                        echo
-                                        '<li class=" has-sub">
-                                            <a class="js-arrow" href="#">
-                                                <i class="far fa-check-square"></i>Supervisores</a>
-                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <!--<li >
-                                                    <a href="registro_supervisor.php">Registrar Nuevo Supervisor</a>
-                                                </li>-->
+                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
+                                            echo'
                                                 <li class=" has-sub">
+                                                    <a class="js-arrow" href="asistencia.php">
+                                                    <i class="fas fa-circle"></i>Asistencia</a>
+                                                </li>
+                                            ';
+                                        }
+                                    ?>
+                                <?php 
+                                if(($_SESSION['id_roluser'] == 1)){
+                                    echo
+                                    '<li class=" has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="far fa-check-square"></i>Supervisores</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            ';
+                                }?>
+                                    <?php 
+                                if($_SESSION['id_roluser'] == 1){
+                                    echo
+                                            '<li class=" has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
-                                                </li>
-                                                <li class=" has-sub">
-                                                    <a href="ver_supervisor.php">Ver Supervisor</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-sub">
-                                            <a class="js-arrow" href="#">
-                                                <i class="fas fa-star"></i>Proveedores.</a>
-                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <!--<li class="  has-sub">
-                                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                                </li>-->
-                                                <li>
-                                                    <a href="ver_proveedor.php">Ver Proveedores</a>
-                                                </li>
-                                            </ul>
-                                        </li>';
-                                    }
-                                ?>
+                                            </li>
+                                            <li class=" has-sub">
+                                                <a href="ver_supervisor.php">Ver Supervisor</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-star"></i>Proveedores.</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li class="  has-sub">
+                                                <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
+                                            </li>
+                                            <li>
+                                                <a href="ver_proveedor.php">Ver Proveedores</a>
+                                            </li>
+                                        </ul>
+                                    </li>';
+                                }
+                            ?>
                         </ul>
                 </nav>
             </div>
