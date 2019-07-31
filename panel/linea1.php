@@ -1,5 +1,5 @@
 <?php 
-  session_start();
+session_start();
   if (!isset($_SESSION['sesvar'])) {
     echo '
         <script>
@@ -9,20 +9,7 @@
 }//end of if
 include ('../adm/conexion.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
-
-    <!-- Title Page-->
-    <title>Registro de Producción.</title>
-
+   <head>
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -597,13 +584,4 @@ include ('../adm/conexion.php');
     <script src="../js/main.js"></script>
 
 </body>
-<script>
-$(document).ready( function () {
-    $('#Tabla-Producción').DataTable();
-		$('.js-example-basic-single').select2();
-} );
-</script>
 </html>
-<!-- end document-->
-
-?>
