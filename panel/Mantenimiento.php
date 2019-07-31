@@ -144,21 +144,21 @@ while($datos=mysqli_fetch_array($consulta)){
         }*/
         
         #div1{
-            height: 100px;
-            width: 593px;
+            height: 150px;
+            width: 920px;
             overflow: auto;
             overflow-x: hidden;
         }
-        /*#table1{
+        #table1{
             text-align: center;
             background-color: white;
             font-family: serif;
             font-size: 18px;
-            width: 570px;
+            width: 900px;
             color:black;
             height: 40px;
             
-        }*/
+        }
         #etiqueta{
             width: 300px;
             height: 300px;
@@ -208,7 +208,7 @@ while($datos=mysqli_fetch_array($consulta)){
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                            <li class=" has-sub">
-                                    <a class="js-arrow" href="./dashboard.php">
+                                    <a class="" href="./dashboard.php">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                                 </li>
                                 <?php 
@@ -452,7 +452,7 @@ while($datos=mysqli_fetch_array($consulta)){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Mantenimiento</h2>
+                                    <h2 class="title-1">Mantenimiento de Máquina No. <?php echo $id?></h2>
                                 </div>
                             </div>
                         </div>
@@ -464,7 +464,7 @@ while($datos=mysqli_fetch_array($consulta)){
 									?>
 								<div id="div1">
 									<table id="table1" >
-										<tr style="text-align:center;font-family:Comic Sans MS;font-size:18px;background-color:lightgreen;color:blue;">
+										<tr style="text-align:center;font-family:Comic Sans MS;font-size:20px;background-color:blue;color:white;">
 											<td>Mantenimiento</td>
 											<td>Fecha</td>
 										</tr>
@@ -486,7 +486,7 @@ while($datos=mysqli_fetch_array($consulta)){
 								<textarea id="mantenimiento" placeholder="Ingresa el Mantenimiento " required="required" style='width: 220px; font-size: 16px; text-align: center'></textarea>
 							
 								<div id="etiagregar">
-									<input value="Agregar" name="agregar" class="agregar" id="agregarcampo" style="height:35px;width:150px; text-align:center;"/>
+									<input value="Agregar" name="agregar" class="btn btn-danger" id="agregarcampo" style="height:35px;width:150px; text-align:center;border-radius:20px;font-size:20px"/>
 								</div>
             
 								<?php
@@ -494,7 +494,7 @@ while($datos=mysqli_fetch_array($consulta)){
 								?>
 								<textarea id="mantenimiento" placeholder="Ingresa el Mantenimiento " required="required" style='width: 220px; font-size: 16px; text-align: center'></textarea>
 								<div id="etiagregar">
-									<input value="Agregar" name="agregar" class="agregar" id="agregarcampo" style="height:35px;width:150px; text-align:center;"/>
+									<input value="Agregar" name="agregar" class="btn btn-danger" id="agregarcampo" style="height:35px;width:150px; text-align:center;border-radius:20px;font-size:20px"/>
 								</div>
 
 								<?php

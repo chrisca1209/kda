@@ -20,7 +20,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Ver Máquina</title>
+    <title>Consultar datos de Máquina</title>
 
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
@@ -44,6 +44,26 @@
     <!-- Main CSS-->
     <link href="../css/theme.css" rel="stylesheet" media="all">
     <link href="../css/style.css" rel="stylesheet" media="all">
+    
+    <style>
+        #main-container{
+            /*margin: 5px auto;*/
+            width: 600px;
+        }
+        table{
+            background-color: white;
+            border-collapse: collapse;
+        }
+        th, td{
+            border: blue solid 1px;
+            /*padding: 2px;*/
+            
+        }
+        tr{
+            background-color:blue;
+            color: white;
+        }
+    </style>
 	
 
 </head>
@@ -314,7 +334,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Ver Máquina</h2>
+                                    <h2 class="title-1">Consultar datos de Máquina</h2>
                                 </div>
                             </div>
                         </div>
@@ -323,7 +343,7 @@
 								<form id="formualariobusqueda">
 									<input type="text" id="busqueda" name="busqueda" placeholder="No. Máquina" required="required" style='width: 130px; font-size: 20px; text-align: center'/>
 									<br><br>
-									<input type="button" class="buscar" value="Buscar" id="enviar_datos_ajax"/>
+									<input type="button" class="au-btn au-btn-icon au-btn--blue" style="border-radius:20px" value="Buscar" id="enviar_datos_ajax"/>
 									<!--<div class="buscar">
 										<button class="au-btn au-btn-icon au-btn--blue" name="Buscar" id="enviar_datos_ajax" value="Buscar">
 											Mantenimiento
@@ -332,37 +352,39 @@
 								</form>
 				
 								<br><br>
-								<div id="mostrardatos">
-									<table align=center> <tr>
-										<td>Número Interno</td>
-										<td><input type="number" style="font-size: 18px; text-align: center" name="numcon" id="numcon" value="" readonly="readonly"/></td>
-										</tr>
-										<tr>
-										<td>Supervisor</td>
-										<td><input type="text" style="font-size: 18px; text-align: center" name="super" id="supervi" value="" readonly="readonly"/></td>
-										</tr>
-										<tr>
-										<td>Tipo de Maquina</td>
-										<td><input type="text" style="font-size: 18px; text-align: center" name="tipo_maquina" id="tipoma" value="" readonly="readonly"/></td>
-										</tr>
-										<tr>
-										<td>Marca</td>
-										<td><input type="text" style="font-size: 18px; text-align: center" name="marca" id="marca" value="" readonly="readonly"/></td>
-										</tr>
-										<tr>
-										<td>No.Serie</td>
-										<td><input type="text" style="font-size: 18px; text-align: center" name="numserie" id="numserie" value="" readonly="readonly"/></td>
-										</tr>
-										<tr>
-									</table><br>
-									<center>
-										<div class="mantenimiento">
-											<input type="submit" class="mantenimiento" name="Mantenimiento" id="Mantenimiento" value="Mantenimiento"/>
-											<!--<button class="au-btn au-btn-icon au-btn--blue" name="Mantenimiento" id="Mantenimiento" value="Mantenimiento">
-												Mantenimiento
-											</button>-->
-										</div>
-									</center>
+								<div id="main-container">
+                                    <div id="mostrardatos">
+                                        <table align=center> 
+                                            <tr>
+                                                <td>Número Interno</td>
+                                                <td><input type="number" style="font-size: 18px; text-align: center; width:352px" name="numcon" id="numcon" value="" readonly="readonly"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supervisor</td>
+                                                <td><input type="text" style="font-size: 18px; text-align: center" name="super" id="supervi" value="" readonly="readonly"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tipo de Maquina</td>
+                                                <td><input type="text" style="font-size: 18px; text-align: center" name="tipo_maquina" id="tipoma" value="" readonly="readonly"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Marca</td>
+                                                <td><input type="text" style="font-size: 18px; text-align: center" name="marca" id="marca" value="" readonly="readonly"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>No.Serie</td>
+                                                <td><input type="text" style="font-size: 18px; text-align: center" name="numserie" id="numserie" value="" readonly="readonly"/></td>
+                                            </tr>
+                                        </table><br>
+                                        <center>
+                                            <div class="mantenimiento">
+                                                <input type="button" class="btn btn-warning" style="border-radius:20px;width: 170px; font-size: 20px; text-align: center" name="Mantenimiento" id="Mantenimiento" value="Mantenimiento"/>
+                                                <!--<button class="au-btn au-btn-icon au-btn--blue" name="Mantenimiento" id="Mantenimiento" value="Mantenimiento">
+                                                    Mantenimiento
+                                                </button>-->
+                                            </div>
+                                        </center>
+                                    </div> 
 								</div>
 							</div><br>
 						</center>

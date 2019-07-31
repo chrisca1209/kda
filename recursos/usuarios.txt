@@ -3,5 +3,3 @@ administrador@kda.com		admin123
 moises@kda.com			moi123
 carolina@kda.com		caro123
 juana@kda.com			jua123
-
-empleado@kda.com		emp123
