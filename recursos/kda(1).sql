@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-08-2019 a las 05:56:30
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Tiempo de generación: 02-08-2019 a las 01:28:19
+-- Versión del servidor: 10.1.40-MariaDB
+-- Versión de PHP: 7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,7 +40,7 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`id_asistencia`, `horaEntrada`, `horaSalida`, `id_supervisor`) VALUES
-(1, '00:00:00', '00:00:00', 1);
+(1, '18:25:29', '00:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -268,8 +268,6 @@ CREATE TABLE `pagos_supervisores` (
 CREATE TABLE `produccion` (
   `id_produccion` int(11) NOT NULL,
   `Cantidad` varchar(50) NOT NULL,
-  `descripcion` text NOT NULL,
-  `fecha` date NOT NULL,
   `id_superv` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -304,18 +302,19 @@ CREATE TABLE `supervisor` (
   `Nombre` varchar(45) NOT NULL,
   `ap_paterno` varchar(45) DEFAULT NULL,
   `ap_materno` varchar(45) DEFAULT NULL,
-  `hrs_trabajadas` varchar(65) NOT NULL
+  `hrs_trabajadas` varchar(65) DEFAULT NULL,
+  `No_linea` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `supervisor`
 --
 
-INSERT INTO `supervisor` (`id_supervisor`, `Nombre`, `ap_paterno`, `ap_materno`, `hrs_trabajadas`) VALUES
-(1, 'Moises', 'Perez', 'Arce', ''),
-(2, 'Carolina', 'Arroyo', 'Hernandez', ''),
-(3, 'Juana', 'Deita', 'Sanchez', ''),
-(4, 'Taller', '', '', '');
+INSERT INTO `supervisor` (`id_supervisor`, `Nombre`, `ap_paterno`, `ap_materno`, `hrs_trabajadas`, `No_linea`) VALUES
+(2, 'Moises', 'Perez', 'Arce', '', '1'),
+(3, 'Carolina', 'Arroyo', 'Hernandez', '', '3'),
+(4, 'Juana', 'Deita', 'Sanchez', '', '2'),
+(5, 'Taller', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -475,7 +474,7 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `supervisor`
 --
 ALTER TABLE `supervisor`
-  MODIFY `id_supervisor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_supervisor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
