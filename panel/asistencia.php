@@ -356,14 +356,14 @@
 						</div>
 						<div class="modal-body">
 							<center>
-					            <input type="text" id="nombreEm" name="nombreEn" class="form-control" style="text-align: center; font-size: 20px;" readonly="readonly" value="">
+					            <input type="text" id="nombreEm" name="nombreEn" class="form-control" style="text-align: center; font-size: 20px;" readonly="readonly" value="<?php echo $_SESSION['nombre_completo'];?>">
 				            </center>
 				            <div style="width:10;height:10px;"></div>
 				            <div class="col-md-12">
 					            <div class="row">
 					            <center>
 						            <div class="col-md-1">
-							            <input type="hidden" id="idE" name="idE" value="">
+							            <input type="hidden" id="idE" name="idE" value="<?php echo $_SESSION['id_usuario']; ?>">
 						            </div>
 						            <div class="col-md-12">
 							            <button type="button" id="btnAgregarHoraEntrada" class="btn btn-info btn-block">Agregar Hora     Entrada</button><br>
@@ -414,6 +414,8 @@
 	
 	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery-3.3.1.js"></script>
 	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+        
+        <script type="text/javascript" src="../js/funcionesJSEmpleado.js"></script>
 			
 	<script type="text/javascript">
 		$(document).ready(function() {
