@@ -1,27 +1,28 @@
 <?php 
-  session_start();
-  if (!isset($_SESSION['sesvar'])) {
-    echo '
-        <script>
-            window.location = "../"
-        </script>
-    ';
-}//end of if
-include ('../adm/conexion.php');
+	session_start();
+	if (!isset($_SESSION['sesvar'])) {
+		echo '
+			<script>
+				window.location = "../"
+			</script>
+		';
+	}//end of if
+
+	include('conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <!-- Required meta tags-->
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Registro de Supervisores</title>
+    <title>Nómina</title>
 
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
@@ -45,6 +46,7 @@ include ('../adm/conexion.php');
     <!-- Main CSS-->
     <link href="../css/theme.css" rel="stylesheet" media="all">
     <link href="../css/style.css" rel="stylesheet" media="all">
+	<link rel="stylesheet" type="text/css" href="../plugins/data-tables/DataTables-1.10.18/css/jquery.dataTables.min.css">
 	
 
 </head>
@@ -62,29 +64,29 @@ include ('../adm/conexion.php');
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="./dashboard.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        </li>
-						<?php 
-                        if($_SESSION['id_roluser'] == 1){
-                            echo 
-                            '
-                            <li class=" has-sub">
-                                <a class="js-arrow" href="verma.php">
-                                    <i class="fas fa-table"></i>Ver Máquina</a>
-                                <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li class=" has-sub">
-                                        <a href="registro_producto.php">Registrar Nuevo Producto</a>
-                                    </li>
-                                    <li>
-                                        <a href="ver_producto.php">Ver Productos Existentes</a>
-                                    </li>
-                                </ul>-->
-                             </li>';
-                            }
-                            ?>
-                            <?php 
+                           <li class=" has-sub">
+                                    <a class="js-arrow" href="./dashboard.php">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                </li>
+                                <?php 
+                            if($_SESSION['id_roluser'] == 1){
+                                echo 
+                                '
+                                <li class=" has-sub">
+                                    <a class="js-arrow" href="verma.php">
+                                        <i class="fas fa-table"></i>Ver Máquina</a>
+                                    <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li class=" has-sub">
+                                            <a href="registro_producto.php">Registrar Nuevo Producto</a>
+                                        </li>
+                                        <li>
+                                            <a href="ver_producto.php">Ver Productos Existentes</a>
+                                        </li>
+                                    </ul>-->
+                                 </li>';
+                                }
+                                ?>
+                                <?php 
                                         if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
                                             echo'
                                                 <li class="has-sub">
@@ -94,9 +96,9 @@ include ('../adm/conexion.php');
                                             ';
                                         }
                                     ?>
-                       <li class=" has-sub">
+                               <li class=" has-sub">
                                        <a class="js-arrow" href="#">
-                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
                                                if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
@@ -120,8 +122,7 @@ include ('../adm/conexion.php');
                                         ?>
                                         </ul>
                                     </li>
-						
-						<?php 
+                                <?php 
                                 if(($_SESSION['id_roluser'] == 1)){
                                     echo
                                     '<li class="active has-sub">
@@ -133,7 +134,7 @@ include ('../adm/conexion.php');
                                     <?php 
                                 if($_SESSION['id_roluser'] == 1){
                                     echo
-                                            '<li class=" has-sub">
+                                            '<li class="active  has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
                                             </li>
                                             <li class=" has-sub">
@@ -152,7 +153,7 @@ include ('../adm/conexion.php');
                                     </li>';
                                 }
                             ?>
-                    </ul>
+                        </ul>
                 </nav>
             </div>
         </aside>
@@ -325,35 +326,12 @@ include ('../adm/conexion.php');
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Registro de Supervisores</h2>
+                                    <h2 class="title-1">Registro de Nómina</h2>
                                 </div>
                             </div>
                         </div>
-						<div>
-							<form action="" method="POST" enctype="multipart/form-data"> 
-									<br><br>
-									<label>Nombre: </label>	<input type="text" name="nomemp" style="width:220px" required="required" placeholder="	Nombre_Empleado"/>
-									<br><br>
-									<label>Apellido Paterno: </label>	<input type="text" name="app" style="width:220px" required="required" placeholder="	Apellido_Paterno"/>
-									<br><br>
-									<label>Apellido Materno: </label>	<input type="text" name="apm" style="width:220px" required="required" placeholder="	Apellido_Materno"/>
-									<br><br>
-									<div class="overview-wrap">
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
-											Guardar
-										</button>
-									</div>
-							</form>
-						</div>
-						<br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!--<div class="copyright">
-                                    <p>Copyright © 2019 Business Technology. All rights reserved. Template by <a href="#">Business Technology</a>.</p>
-                                </div>-->
-                            </div>
-                        </div>
-                    </div>
+						<br><br>
+						
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
@@ -361,6 +339,100 @@ include ('../adm/conexion.php');
         <!-- END PAGE CONTAINER-->
 
     </div>
+    
+    <!-- Modal Section-->
+    <!-- modal static -->
+			<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+			 data-backdrop="static">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="staticModalLabel">Actualizar Datos Supervisor</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="formularioActualizarSupervisor">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <input type="hidden" name="idAct" id="idAct" value="">
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Nombre(s)</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="nombreAct" id="nombreAct" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Apellido Paterno</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="apePAct" id="apePAct" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Apellido Materno</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="apeMAct" id="apeMAct" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                            <div class="input-icon-group col-md-12 mb-3">
+                                                    <label>Número de Línea</label>
+                                                    <div class="input-icon-append">
+                                                            <input type="text" name="numLinea" id="numLinea" class="form-control" required  value="" >
+                                                    </div>
+                                            </div>
+                                    </div>
+						        </div>  
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" id="btnActualizarEmpleado" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="modalAsistencia" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+			 data-backdrop="static">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="staticModalLabel">Pasar Asistencia</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<center>
+					            <input type="text" id="nombreEm" name="nombreEn" class="form-control" style="text-align: center; font-size: 20px;" readonly="readonly" value="">
+				            </center>
+				        <div style="width:100;height:20px;"></div>
+				            <div class="col-md-12">
+					            <div class="row">
+                                    <div class="col-md-1">
+                                        <input type="hidden" id="idE" name="idE" value="">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <button type="button" id="btnAgregarHoraEntrada" class="btn btn-info btn-block">Agregar Hora Entrada</button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <button type="button" id="btnAgregarHoraSalida" class="btn btn-info btn-block">Agregar Hora de Salida</button>
+                                    </div>
+                                    <div class="col-md-1"></div>
+					            </div>
+				        </div>
+					<div style="width:100;height:20px;"></div>
+					<div style="width:100;height:20px;"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" id="btnActualizarEmpleado" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end modal static -->
 
     <!-- Jquery JS-->
     <script src="../vendor/jquery-3.2.1.min.js"></script>
@@ -385,28 +457,17 @@ include ('../adm/conexion.php');
 
     <!-- Main JS-->
     <script src="../js/main.js"></script>
+	
+	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+			
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#productos').DataTable();
+		} );
+	</script>
 
 </body>
 
 </html>
 <!-- end document-->
-<?php
-
-	include ('../adm/conexion.php');
-	
-	@$nomemp = $_POST['nomemp'];
-	@$ape_p = $_POST['app'];
-	@$ape_m = $_POST['apm'];
-	
-	
-	if(isset($nomemp) and isset($ape_p) and isset($ape_m))
-	{
-			$insertar=mysqli_query($conexion,"insert into supervisor values(NULL,'$nomemp','$ape_p','$ape_m');");
-				if($insertar){
-					echo"<script>alert('Datos Guardados Correctamente'); window.location='ver_supervisor.php'</script>";
-				}else{
-					echo"<script>alert('Datos no insertados en la Base de datos \n Vuelve a intentarlo')</script>";
-                } 
-    }
-	mysqli_close($conexion);
-?>

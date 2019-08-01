@@ -85,7 +85,17 @@ include ('../adm/conexion.php');
                              </li>';
                             }
                             ?>
-                       <li class=" has-sub">
+                            <?php 
+                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
+                                            echo'
+                                                <li class="has-sub">
+                                                    <a class="js-arrow" href="asistencia.php">
+                                                    <i class="fas fa-circle"></i>Asistencia</a>
+                                                </li>
+                                            ';
+                                        }
+                                    ?>
+                       <li class="active has-sub">
                                        <a class="js-arrow" href="#">
                                             <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -104,23 +114,13 @@ include ('../adm/conexion.php');
                                                }
                                                 if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] ==4))){
                                                    echo '
-                                                        <li>
+                                                        <li class="active  has-sub">
                                                            <a href="linea3.php">Línea 3</a>
                                                         </li>';
                                                }
                                         ?>
                                         </ul>
                                     </li>
-                        <?php 
-                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
-                                            echo'
-                                                <li class=" has-sub">
-                                                    <a class="" href="asistencia.php">
-                                                    <i class="fas fa-circle"></i>Asistencia</a>
-                                                </li>
-                                            ';
-                                        }
-                                    ?>
                                 <?php 
                                 if(($_SESSION['id_roluser'] == 1)){
                                     echo
