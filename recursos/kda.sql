@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2019 a las 22:22:27
--- Versión del servidor: 10.1.40-MariaDB
--- Versión de PHP: 7.1.29
+-- Tiempo de generación: 01-08-2019 a las 05:56:30
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,6 +41,48 @@ CREATE TABLE `asistencia` (
 
 INSERT INTO `asistencia` (`id_asistencia`, `horaEntrada`, `horaSalida`, `id_supervisor`) VALUES
 (1, '00:00:00', '00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `linea_1`
+--
+
+CREATE TABLE `linea_1` (
+  `id_linea1` int(10) NOT NULL,
+  `cantidad` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha` date NOT NULL,
+  `id_superv` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `linea_2`
+--
+
+CREATE TABLE `linea_2` (
+  `id_linea2` int(10) NOT NULL,
+  `cantidad` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha` date NOT NULL,
+  `id_superv` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `linea_3`
+--
+
+CREATE TABLE `linea_3` (
+  `id_linea3` int(10) NOT NULL,
+  `cantidad` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha` date NOT NULL,
+  `id_superv` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -226,6 +268,8 @@ CREATE TABLE `pagos_supervisores` (
 CREATE TABLE `produccion` (
   `id_produccion` int(11) NOT NULL,
   `Cantidad` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha` date NOT NULL,
   `id_superv` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -310,6 +354,24 @@ ALTER TABLE `asistencia`
   ADD PRIMARY KEY (`id_asistencia`);
 
 --
+-- Indices de la tabla `linea_1`
+--
+ALTER TABLE `linea_1`
+  ADD PRIMARY KEY (`id_linea1`);
+
+--
+-- Indices de la tabla `linea_2`
+--
+ALTER TABLE `linea_2`
+  ADD PRIMARY KEY (`id_linea2`);
+
+--
+-- Indices de la tabla `linea_3`
+--
+ALTER TABLE `linea_3`
+  ADD PRIMARY KEY (`id_linea3`);
+
+--
 -- Indices de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
@@ -360,6 +422,24 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `asistencia`
   MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `linea_1`
+--
+ALTER TABLE `linea_1`
+  MODIFY `id_linea1` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `linea_2`
+--
+ALTER TABLE `linea_2`
+  MODIFY `id_linea2` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `linea_3`
+--
+ALTER TABLE `linea_3`
+  MODIFY `id_linea3` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
