@@ -10,7 +10,7 @@ $.ajax({
 	success:function(r){
 		//alert(r);
 	if(r==1){
-		window.location='linea_1.php';
+		window.location='linea1.php';
 	}
 	else{
 		alert('No se pudo ingresar los datos');	
