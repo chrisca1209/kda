@@ -344,7 +344,7 @@ include ('../adm/conexion.php');
 										while(($row = mysqli_fetch_array($query_result)) != null){
 										
 											echo '<tr>
-												<td>'.$row['id_linea1'].'</td>
+												<td>'.$row['id_linea2'].'</td>
 												<td>'.$row['cantidad'].'</td>
 												<td>'.$row['descripcion'].'</td>
 												<td>'.$row['fecha'].'</td>
