@@ -70,7 +70,7 @@ include ('../adm/conexion.php');
                                         if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
                                             echo'
                                                 <li class="has-sub">
-                                                    <a class="js-arrow" href="asistencia.php">
+                                                    <a class="" href="asistencia.php">
                                                     <i class="fas fa-circle"></i>Asistencia</a>
                                                 </li>
                                             ';
@@ -326,6 +326,13 @@ include ('../adm/conexion.php');
 							
 						</div>
 						<div>
+							
+									<div class="overview-wrap">
+										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
+											Guardar
+										</button>
+									</div>
+							
 							<?php 
 								$query = 'SELECT * FROM linea_1;';
 								$query_result = mysqli_query($conexion,$query);

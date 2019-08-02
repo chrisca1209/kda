@@ -1,3 +1,4 @@
+
 function validarFormVacio(formulario){
 	datos=$('#' + formulario).serialize();
 	d=datos.split('&');
@@ -11,30 +12,50 @@ function validarFormVacio(formulario){
 	return vacios;
 }
 
-function agregardatossupervisor(datos){
-	d=datos.split('||');
-  $('#idAct').val(d[0]);
-	$('#nombreAct').val(d[1]);
-	$('#apePAct').val(d[2]);
-	$('#apeMAct').val(d[3]);
-	$('#noLinea').val(d[4]);
+function agregarDatos(){
+	vacios=validarFormVacio('formularioNuevoEmpleado');
+	if(vacios > 0){
+		alertify.warning("Debes llenar todos los campos :l");
+		return false;
+	}
+	datos=$('#formularioNuevoSupervisor').serialize();
+	cadena=datos;
+	$.ajax({
+		type:"POST",
+		url:"../adm/jsonSupervisores.php?accion=agregarNuevoSupervisor",
+		data:cadena,
+		success:function(r){
+		alert(r);
+		if(r){
+			window.location='ver_supervisor.php'
+		}else{
+			alert('NO se pudo');
+		}
+		}
+	});
 }
 
-$('#btnGuardarNuevoSupervisor').click(function(){
-  vacios=validarFormVacio('formularioNuevoSupervisor');
-  if(vacios > 0){
-    alertify.warning("Debes llenar todos los campos :l");
-    return false;
-  }
-	datos=$('#formularioNuevoSupervisor').serialize();
+$('#btnAgregarHoraEntrada').click(function(){
+	//alert("ASDFSD");
+	id = $('#idE').val();
+cadena = "id="+id;
+//alert(cadena);
 	$.ajax({
-	  type:"POST",
-		data:datos,
-		url:"../adm/jsonSupervisores.php?accion=agregarNuevoSupervisor",
+		type:"POST",
+		url:"../adm/jsonSupervisores.php?accion=AgregarHoraEntrada",
+		data:cadena,
 		success:function(r){
-				alert('Datos Guardados Correctamente'); 
-				window.location = "ver_supervisor.php";
-			
+			alert(r);
+			if(r){
+				window.location = "asistencia.php";
+			}else{
+				alert("No se pudo agregar la hora");
+			}
 		}
 	});
 });
+
+function editarDatos(arregloRecibido){
+
+	alert(""+arregloRecibido);
+}

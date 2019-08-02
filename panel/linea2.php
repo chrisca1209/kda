@@ -70,7 +70,7 @@ include ('../adm/conexion.php');
                                         if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
                                             echo'
                                                 <li class="has-sub">
-                                                    <a class="js-arrow" href="asistencia.php">
+                                                    <a class="" href="asistencia.php">
                                                     <i class="fas fa-circle"></i>Asistencia</a>
                                                 </li>
                                             ';
