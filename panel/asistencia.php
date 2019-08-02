@@ -415,7 +415,8 @@
 	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery-3.3.1.js"></script>
 	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
         
-        <script type="text/javascript" src="../js/funcionesJSEmpleado.js"></script>
+    
+    <script src="../js/funcionesJSSupervisor.js"></script>    
 			
 	<script type="text/javascript">
 		$(document).ready(function() {

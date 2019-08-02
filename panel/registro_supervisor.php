@@ -321,31 +321,21 @@ include ('../adm/conexion.php');
                             </div>
                         </div>
 						<div>
-							<form action="" method="POST" enctype="multipart/form-data"> 
+							<form id="formularioNuevoSupervisor"> 
 									<br><br>
-									<label>Nombre: </label>	<input type="text" name="nomemp" style="width:220px" required="required" placeholder="	Nombre_Empleado"/>
+									<label>Nombre: </label>	<input type="text" name="nomemp" id="nomemp" style="width:220px" required="required" placeholder="	Nombre_Empleado"/>
 									<br><br>
-									<label>Apellido Paterno: </label>	<input type="text" name="app" style="width:220px" required="required" placeholder="	Apellido_Paterno"/>
+									<label>Apellido Paterno: </label>	<input type="text" name="app" id="app" style="width:220px" required="required" placeholder="	Apellido_Paterno"/>
 									<br><br>
-									<label>Apellido Materno: </label>	<input type="text" name="apm" style="width:220px" required="required" placeholder="	Apellido_Materno"/>
+									<label>Apellido Materno: </label>	<input type="text" name="apm" id="apm" style="width:220px" required="required" placeholder="	Apellido_Materno"/>
 									<br><br>
-									<label>No. Linea: </label>	<input type="number" name="noli" style="width:220px" required="required" placeholder="No Linea"/>
+									<label>No. Linea: </label>	<input type="number" name="noli" id="noli" style="width:220px" placeholder="No Linea"/>
 									<br><br>
 									<div class="overview-wrap">
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
-											Guardar
-										</button>
+                                        <span class="au-btn au-btn-icon au-btn--blue" id="btnGuardarNuevoSupervisor" onclick="agregarDatos()">Guardar</span>
 									</div>
 							</form>
 						</div>
-						<br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!--<div class="copyright">
-                                    <p>Copyright © 2019 Business Technology. All rights reserved. Template by <a href="#">Business Technology</a>.</p>
-                                </div>-->
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -378,6 +368,7 @@ include ('../adm/conexion.php');
 
     <!-- Main JS-->
     <script src="../js/main.js"></script>
+    <script src="../js/funcionesJSSupervisor.js"></script>
 
 </body>
 
@@ -385,7 +376,7 @@ include ('../adm/conexion.php');
 <!-- end document-->
 <?php
 
-	include ('../adm/conexion.php');
+	/*include ('../adm/conexion.php');
 	
 	@$nomemp = $_POST['nomemp'];
 	@$ape_p = $_POST['app'];
@@ -403,5 +394,5 @@ include ('../adm/conexion.php');
 					echo"<script>alert('Datos no insertados en la Base de datos \n Vuelve a intentarlo')</script>";
                 } 
     }
-	mysqli_close($conexion);
+	mysqli_close($conexion);*/
 ?>

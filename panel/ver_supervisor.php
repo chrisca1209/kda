@@ -353,6 +353,7 @@
 									<?php
 										while(($row = mysqli_fetch_array($query_result)) != null){
 										
+                                          //  $arregloDatos = $row[0]."||".$row[1]."||".$row[2]."||".$row[3]. "||".$row[5];
 											echo '<tr>
                                             <div data-toggle="modal" data-target="#modalAsistencia" onclick="llenarDatos('.$row[1].' '.$row[2].' '.$row[3].')">
 												<td>'.$row[0].'</td>
@@ -361,7 +362,7 @@
 												<td>'.$row[2].'</td>
 												<td>'.$row[3].'</td>												
                                                 <td>'.$row[5].'</td>
-												<td><button type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#staticModal"">Editar</button></td>
+												<td><span type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#staticModal" onclick="editarDatos('.$row[1].')">Editar</span></td>
 												<td><a href=eliminar_supervisor.php?id='.$row[0].'><button type="button" class="btn btn-danger">Eliminar</button></a></td>
 											</tr>';
 										}//end while
@@ -399,7 +400,7 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<form id="formularioActualizarSupervisor">
+							<form id="formularioActualizarEmpleado">
                                 <div class="box-body">
                                     <div class="form-row">
                                         <input type="hidden" name="idAct" id="idAct" value="">
@@ -424,7 +425,7 @@
                                             <div class="input-icon-group col-md-12 mb-3">
                                                     <label>Número de Línea</label>
                                                     <div class="input-icon-append">
-                                                            <input type="text" name="numLinea" id="numLinea" class="form-control" required  value="" >
+                                                            <input type="text" name="numLinea" id="noLinea" class="form-control" required  value="" >
                                                     </div>
                                             </div>
                                     </div>
@@ -506,6 +507,8 @@
 	
 	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery-3.3.1.js"></script>
 	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+        
+        <script type="text/javascript" src="../js/funcionesJSSupervisor.js"></script>
 			
 	<script type="text/javascript">
 		$(document).ready(function() {
