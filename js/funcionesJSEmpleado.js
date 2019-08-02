@@ -248,7 +248,7 @@ $('#btnFin').click(function(){
 		data:cadena,
 		success:function(r){
 			if(r){
-				window.location = "RH_Empleados.php";
+				window.location = "asistencia.php";
 			}else{
 				alert("No se pudo agregar");
 			}

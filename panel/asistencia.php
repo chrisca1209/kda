@@ -380,7 +380,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-							<button type="button" id="btnActualizarEmpleado" class="btn btn-primary">Guardar</button>
+							<button type="button" id="btnFin" class="btn btn-primary" style="float: left;">Calcular</button>
 						</div>
 					</div>
 				</div>

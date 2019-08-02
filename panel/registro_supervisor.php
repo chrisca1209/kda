@@ -329,6 +329,8 @@ include ('../adm/conexion.php');
 									<br><br>
 									<label>Apellido Materno: </label>	<input type="text" name="apm" style="width:220px" required="required" placeholder="	Apellido_Materno"/>
 									<br><br>
+									<label>No. Linea: </label>	<input type="number" name="noli" style="width:220px" required="required" placeholder="No Linea"/>
+									<br><br>
 									<div class="overview-wrap">
 										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
 											Guardar
@@ -387,12 +389,14 @@ include ('../adm/conexion.php');
 	
 	@$nomemp = $_POST['nomemp'];
 	@$ape_p = $_POST['app'];
-	@$ape_m = $_POST['apm'];
+	@$ape_m = $_POST['apm'];	
+    @$noli = $_POST['noli'];
+
 	
 	
-	if(isset($nomemp) and isset($ape_p) and isset($ape_m))
+	if(isset($nomemp) and isset($ape_p) and isset($ape_m) and isset($noli))
 	{
-			$insertar=mysqli_query($conexion,"insert into supervisor values(NULL,'$nomemp','$ape_p','$ape_m');");
+			$insertar=mysqli_query($conexion,"insert into supervisor values(NULL,'$nomemp','$ape_p','$ape_m','','$noli');");
 				if($insertar){
 					echo"<script>alert('Datos Guardados Correctamente'); window.location='ver_supervisor.php'</script>";
 				}else{

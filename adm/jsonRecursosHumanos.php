@@ -191,12 +191,12 @@
     case 'CalcularHoras':
       include 'conexion.php';
       $id = $_POST['id'];
-      $sql1 = "SELECT TIMESTAMPDIFF(minute , horaEntrada, horaSalida ) AS diferencia from asistencia where id_usuario=".$id;
+      $sql1 = "SELECT TIMESTAMPDIFF(minute , horaEntrada, horaSalida ) AS diferencia from asistencia where id_supervisor=".$id;
       $ejecutarC = mysqli_query($conexion,$sql1);
       $dat = mysqli_fetch_array($ejecutarC);
       $restante = $dat['diferencia'];
       $fin = $restante / 60;
-      $sacar = "select hrs_trabajadas from usuario where id_usuario=".$id;
+      $sacar = "select hrs_trabajadas from supervisor where id_supervisor=".$id;
       $ejectu = mysqli_query($conexion,$sacar);
       $da = mysqli_fetch_array($ejectu);
       $ha = $da[0];
@@ -204,9 +204,9 @@
       $horao = "00:00:00";
       header('Content-Type: application/json');
       $pdo = new PDO("mysql:dbname=kda;host=localhost","root","");
-      $sentenciaSQL1 = $pdo->prepare("update asistencia set horaEntrada=:hore,horaSalida=:hors where id_usuario=:id");
+      $sentenciaSQL1 = $pdo->prepare("update asistencia set horaEntrada=:hore,horaSalida=:hors where id_supervisor=:id");
       $respuesta1 = $sentenciaSQL1->execute(array("id"=>$id,"hore"=>$horao,"hors"=>$horao));
-      $sentenciaSQL = $pdo->prepare("update usuario set hrs_trabajadas=:hor where id_usuario=:id");
+      $sentenciaSQL = $pdo->prepare("update usuario set hrs_trabajadas=:hor where id_supervisor=:id");
       $respuesta = $sentenciaSQL->execute(array("hor"=>$fsum,"id"=>$id));
       echo json_encode($respuesta);
       break;
