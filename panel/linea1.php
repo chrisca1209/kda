@@ -35,6 +35,7 @@ include ('../adm/conexion.php');
 		<link href="../vendor/DataTables/datatables.css" rel="stylesheet" media="all">
 	
 	<link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../plugins/data-tables/DataTables-1.10.18/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -324,31 +325,36 @@ include ('../adm/conexion.php');
 						</div>
 							
 						</div>
-						<br>
-						<br>
-						<div class="row">
-							<div class="col-md-12">
-							<h4>Tabla Producción.</h4>
-							<table class="table table-bordered" id="Tabla-Producción" width="100%" cellspacing="0">
-					<thead>
-						<th>Numero</th>
-						<th>Cantidad</th>
-						<th>Descripción</th>
-						<th>Fecha</th>
-						<th>Id_Supervisor</th>
-					</thead>
-					</table>
-					</div>
-						</div>
-												
 						<div>
-							
-									<div class="overview-wrap">
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
-											Guardar
-										</button>
-									</div>
-							</form>
+							<?php 
+								$query = 'SELECT * FROM linea_1;';
+								$query_result = mysqli_query($conexion,$query);
+							?>
+						<br><br>
+						<table id="produccion" style="text-align:center">
+								<thead style="">
+									<th>Numero</th>
+									<th>Cantida</th>
+									<th>Descripción</th>
+									<th>Fecha</th>
+									<th>Id_Supervisor</th>
+								</thead>
+								<tbody style="text-align:center;">
+									<?php
+										while(($row = mysqli_fetch_array($query_result)) != null){
+										
+											echo '<tr>
+												<td>'.$row['id_linea1'].'</td>
+												<td>'.$row['cantidad'].'</td>
+												<td>'.$row['descripcion'].'</td>
+												<td>'.$row['fecha'].'</td>
+												<td>'.$row['id_superv'].'</td>
+												
+											</tr>';
+										}//end while
+									?>
+								</tbody>
+							</table>
 						</div>
 						<br>
                         <div class="row">
@@ -582,11 +588,12 @@ include ('../adm/conexion.php');
     <script src="../js/main.js"></script>
 		<script src="../js/funciones_lineas.js">
 		</script>
-<script type="text/javascript" src="./assets/plugins/DataTables-1.10.18/js/jquery.datatables.min.js"></script>
+<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
 			
 			<script type="text/javascript">
 				$(document).ready(function(){
-					$('#example').DataTable();
+					$('#produccion').DataTable();
 					
 				});
 				</script>
