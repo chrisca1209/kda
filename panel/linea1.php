@@ -34,6 +34,7 @@ include ('../adm/conexion.php');
     <link href="../css/style.css" rel="stylesheet" media="all">
 		<link href="../vendor/DataTables/datatables.css" rel="stylesheet" media="all">
 	
+	<link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -313,7 +314,7 @@ include ('../adm/conexion.php');
                             </div>
                         </div>
                         <br><br>
-    					<div class="row"> 
+    				<div class="row"> 
 						<div class="col-md-7">
 							<div class="overview-wrap">
 										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#modal-cantidad-dia">
@@ -321,43 +322,24 @@ include ('../adm/conexion.php');
 										</button>
 							</div>
 						</div>
-						<div class="col-md-3">
-						<div class="overview-wrap">
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-dia">
-											Día.
-										</button>
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-periodo">
-											Periodo.
-										</button>
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-mes">
-											Mes.
-										</button>
-									</div>
-						</div>	
+							
 						</div>
 						<br>
 						<br>
 						<div class="row">
 							<div class="col-md-12">
-							<table id="Tabla-Producción">
-							<thead>
-							<th>
-							numero
-							</th>
-							</thead>
-							<tbody>
-							<tr>
-							<td>
-							1
-							</td>
-							</tr>
-							</tbody>
-							
-							</table>
-							</div>
-						
+							<h4>Tabla Producción.</h4>
+							<table class="table table-bordered" id="Tabla-Producción" width="100%" cellspacing="0">
+					<thead>
+						<th>Numero</th>
+						<th>Cantidad</th>
+						<th>Descripción</th>
+						<th>Fecha</th>
+						<th>Id_Supervisor</th>
+					</thead>
+					</table>
+					</div>
 						</div>
-						<br>
 												
 						<div>
 							
@@ -404,9 +386,10 @@ include ('../adm/conexion.php');
 			</div>
 			<div class="row">
 			<div class="col-md-12">
-			<input type="number" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control"><h4>Descripción de Producción.</h4>    
-    		<input type="text" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Descripción de Producción" class="form-control">
-
+			<input type="number" name="cantidad-dia" id="modal-numeroProduccion" placeholder="Numero de Producción" class="form-control"><h4>Descripción de Producción.</h4>    
+    	<input type="text" name="cantidad-dia" id="modal-descripcion" placeholder="Descripción de Producción" class="form-control">
+			<input type="hidden" name="id_supervisor" id="id_supervisor" placeholder="Descripción de Producción" value="<?php echo $_SESSION['id_usuario']?>" class="form-control">
+			
 
 			</div>
 			</div>
@@ -414,7 +397,7 @@ include ('../adm/conexion.php');
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" id="btnagregarlinea1" class="btn btn-primary">Agregar</button>
       </div>
     </div>
   </div>
@@ -597,6 +580,16 @@ include ('../adm/conexion.php');
 
     <!-- Main JS-->
     <script src="../js/main.js"></script>
+		<script src="../js/funciones_lineas.js">
+		</script>
+<script type="text/javascript" src="./assets/plugins/DataTables-1.10.18/js/jquery.datatables.min.js"></script>
+			
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('#example').DataTable();
+					
+				});
+				</script>
 
 </body>
 </html>

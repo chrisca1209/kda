@@ -1,0 +1,20 @@
+$('#btnagregarlinea1').click(function(){
+	Numero=$('#modal-numeroProduccion').val();
+	Descripcion=$('#modal-descripcion').val();
+	id_supervisor=$('#id_supervisor').val();
+	cadena='Numero='+Numero+'&Descripcion='+Descripcion+'&id_supervisor='+id_supervisor;
+$.ajax({
+	type:"POST",
+	url:"../adm/funciones_lineas.php?accion=agregarlinea1",
+	data:cadena,
+	success:function(r){
+		//alert(r);
+	if(r==1){
+		window.location='linea_1.php';
+	}
+	else{
+		alert('No se pudo ingresar los datos');	
+	}
+	}
+});
+});
