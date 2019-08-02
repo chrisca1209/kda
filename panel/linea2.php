@@ -1,5 +1,5 @@
 <?php 
-  session_start();
+session_start();
   if (!isset($_SESSION['sesvar'])) {
     echo '
         <script>
@@ -9,20 +9,7 @@
 }//end of if
 include ('../adm/conexion.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
-
-    <!-- Title Page-->
-    <title>Registro de Producción.</title>
-
+   <head>
     <!-- Fontfaces CSS-->
     <link href="../css/font-face.css" rel="stylesheet" media="all">
     <link href="../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -47,6 +34,8 @@ include ('../adm/conexion.php');
     <link href="../css/style.css" rel="stylesheet" media="all">
 		<link href="../vendor/DataTables/datatables.css" rel="stylesheet" media="all">
 	
+	<link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../plugins/data-tables/DataTables-1.10.18/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -74,14 +63,6 @@ include ('../adm/conexion.php');
                             <li class=" has-sub">
                                 <a class="" href="verma.php">
                                     <i class="fas fa-table"></i>Ver Máquina</a>
-                                <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li class=" has-sub">
-                                        <a href="registro_producto.php">Registrar Nuevo Producto</a>
-                                    </li>
-                                    <li>
-                                        <a href="ver_producto.php">Ver Productos Existentes</a>
-                                    </li>
-                                </ul>-->
                              </li>';
                             }
                             ?>
@@ -95,20 +76,20 @@ include ('../adm/conexion.php');
                                             ';
                                         }
                                     ?>
-                      <li class="active has-sub">
+                       <li class="active has-sub">
                                        <a class="js-arrow" href="#">
                                             <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
                                                if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
                                                         echo '
-                                                        <li class="  has-sub">
+                                                        <li class=" active has-sub">
                                                             <a href="linea1.php">Línea 1</a>
                                                         </li>';
                                                 }
                                                 if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 5))){
                                                         echo '
-                                                        <li class="active  has-sub">
+                                                        <li>
                                                            <a href="linea2.php">Línea 2</a>
                                                         </li>';
                                                }
@@ -293,7 +274,7 @@ include ('../adm/conexion.php');
                                             <img src="../images/user.png" alt="" width="300px" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre']; ?></a>
+                                            <a class="js-acc-btn" href="#"><?php echo $_SESSION['nombre_completo']; ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -302,7 +283,7 @@ include ('../adm/conexion.php');
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <label><?php echo $_SESSION['nombre']; ?></label>
+                                                        <label><?php echo $_SESSION['nombre_completo']; ?></label>
                                                     </h5>
                                                     <label><?php echo $_SESSION['email']; ?></label>
                                                 </div>
@@ -328,11 +309,13 @@ include ('../adm/conexion.php');
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">Registro de Produción.<br>Linea de Juana:</h2>
+                                    <h2 class="title-1">Registro de Producción.<br>Linea de Juana</h2>
+                                    
                                 </div>
                             </div>
                         </div>
-												<div class="row"> 
+                        <br><br>
+    				<div class="row"> 
 						<div class="col-md-7">
 							<div class="overview-wrap">
 										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#modal-cantidad-dia">
@@ -340,52 +323,38 @@ include ('../adm/conexion.php');
 										</button>
 							</div>
 						</div>
-						<div class="col-md-3">
-						<div class="overview-wrap">
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-dia">
-											Día.
-										</button>
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-periodo">
-											Periodo.
-										</button>
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar" data-toggle="modal" data-target="#Producción-mes">
-											Mes.
-										</button>
-									</div>
-						</div>	
-						</div>
-						<br>
-						<br>
-						<div class="row">
-							<div class="col-md-12">
-							<table id="Tabla-Producción">
-							<thead>
-							<th>
-							numero
-							</th>
-							</thead>
-							<tbody>
-							<tr>
-							<td>
-							1
-							</td>
-							</tr>
-							</tbody>
 							
-							</table>
-							</div>
-						
 						</div>
-						<br>
-												
 						<div>
-							
-									<div class="overview-wrap">
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
-											Guardar
-										</button>
-									</div>
-							</form>
+							<?php 
+								$query = 'SELECT * FROM linea_2;';
+								$query_result = mysqli_query($conexion,$query);
+							?>
+						<br><br>
+						<table id="produccion" style="text-align:center">
+								<thead style="">
+									<th>Numero</th>
+									<th>Cantida</th>
+									<th>Descripción</th>
+									<th>Fecha</th>
+									<th>Id_Supervisor</th>
+								</thead>
+								<tbody style="text-align:center;">
+									<?php
+										while(($row = mysqli_fetch_array($query_result)) != null){
+										
+											echo '<tr>
+												<td>'.$row['id_linea1'].'</td>
+												<td>'.$row['cantidad'].'</td>
+												<td>'.$row['descripcion'].'</td>
+												<td>'.$row['fecha'].'</td>
+												<td>'.$row['id_superv'].'</td>
+												
+											</tr>';
+										}//end while
+									?>
+								</tbody>
+							</table>
 						</div>
 						<br>
                         <div class="row">
@@ -423,14 +392,18 @@ include ('../adm/conexion.php');
 			</div>
 			<div class="row">
 			<div class="col-md-12">
-			<input type="number" name="cantidad-dia" id="modal-cantidad-dia" placeholder="Numero de Producción" class="form-control">
+			<input type="number" name="cantidad-dia" id="modal-numeroProduccion" placeholder="Numero de Producción" class="form-control"><h4>Descripción de Producción.</h4>    
+    	<input type="text" name="cantidad-dia" id="modal-descripcion" placeholder="Descripción de Producción" class="form-control">
+			<input type="hidden" name="id_supervisor" id="id_supervisor" placeholder="Descripción de Producción" value="<?php echo $_SESSION['id_usuario']?>" class="form-control">
+			
+
 			</div>
 			</div>
         <p><p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" id="btnagregarlinea1" class="btn btn-primary">Agregar</button>
       </div>
     </div>
   </div>
@@ -613,15 +586,17 @@ include ('../adm/conexion.php');
 
     <!-- Main JS-->
     <script src="../js/main.js"></script>
+		<script src="../js/funciones_lineas.js">
+		</script>
+<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="../plugins/data-tables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+			
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('#produccion').DataTable();
+					
+				});
+				</script>
 
 </body>
-<script>
-$(document).ready( function () {
-    $('#Tabla-Producción').DataTable();
-		$('.js-example-basic-single').select2();
-} );
-</script>
 </html>
-<!-- end document-->
-
-?>
