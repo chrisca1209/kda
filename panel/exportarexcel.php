@@ -19,6 +19,8 @@ $fila2=9;
 $fila=9;
 $filename="Mantenimientos.xls";
 
+$gdImage = imagecreatefrompng('../images/kda1.png');//Logotipo
+
 
 //$objPHPExcel->getProperties()->setCreator("Cante")->setDescription("Reporte de Mantenimiento");
 
@@ -34,6 +36,16 @@ $objPHPExcel->getProperties()
 //Establecemos la pestaña activa y nombre a la pestaña
 $objPHPExcel->setActiveSheetIndex(0);
 $objPHPExcel->getActiveSheet()->setTitle("Mantenimiento de Maquina");
+
+	$objDrawing = new PHPExcel_Worksheet_MemoryDrawing();
+	$objDrawing->setName('Logotipo');
+	$objDrawing->setDescription('Logotipo');
+	$objDrawing->setImageResource($gdImage);
+	$objDrawing->setRenderingFunction(PHPExcel_Worksheet_MemoryDrawing::RENDERING_PNG);
+	$objDrawing->setMimeType(PHPExcel_Worksheet_MemoryDrawing::MIMETYPE_DEFAULT);
+	$objDrawing->setHeight(120);
+	$objDrawing->setCoordinates('C1');
+	$objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
 $estiloTituloReporte = array(
     'font' => array(

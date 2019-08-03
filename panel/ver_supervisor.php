@@ -86,18 +86,28 @@
                                  </li>';
                                 }
                                 ?>
+                               <?php 
+                                        if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
+                                            echo'
+                                                <li class="has-sub">
+                                                    <a class="js-arrow" href="asistencia.php">
+                                                    <i class="fas fa-circle"></i>Asistencia</a>
+                                                </li>
+                                            ';
+                                        }
+                                    ?>
                                <li class=" has-sub">
                                        <a class="js-arrow" href="#">
-                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
-                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
+                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2)){
                                                         echo '
                                                         <li class="  has-sub">
                                                             <a href="linea1.php">Línea 1</a>
                                                         </li>';
                                                 }
-                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 5))){
+                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 3))){
                                                         echo '
                                                         <li>
                                                            <a href="linea2.php">Línea 2</a>
@@ -112,38 +122,37 @@
                                         ?>
                                         </ul>
                                     </li>
-                                <?php 
-                                    if($_SESSION['id_roluser'] == 1){
-                                        echo
-                                        '<li class="active has-sub">
-                                            <a class="js-arrow" href="#">
-                                                <i class="far fa-check-square"></i>Supervisores</a>
-                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <!--<li >
-                                                    <a href="registro_supervisor.php">Registrar Nuevo Supervisor</a>
-                                                </li>-->
-                                                <li class=" has-sub">
+                                    <?php 
+                                if(($_SESSION['id_roluser'] == 1)){
+                                    echo
+                                    '<li class="active has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="far fa-check-square"></i>Supervisores</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            ';
+                                }?>
+                                    <?php 
+                                if($_SESSION['id_roluser'] == 1){
+                                    echo
+                                            '<!--<li class=" has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
-                                                </li>
-                                                <li class="active has-sub">
-                                                    <a href="ver_supervisor.php">Ver Supervisor</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-sub">
-                                            <a class="js-arrow" href="#">
-                                                <i class="fas fa-star"></i>Proveedores.</a>
-                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <!--<li class="  has-sub">
-                                                    <a href="registro_proveedor.php">Registrar Nuevo Proveedor</a>
-                                                </li>-->
-                                                <li>
-                                                    <a href="ver_proveedor.php">Ver Proveedores</a>
-                                                </li>
-                                            </ul>
-                                        </li>';
-                                    }
-                                ?>
+                                            </li>-->
+                                            <li class="active has-sub">
+                                                <a href="ver_supervisor.php">Ver Supervisor</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-star"></i>Proveedores.</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li class=" has-sub">
+                                                <a href="ver_proveedor.php">Ver Proveedores</a>
+                                            </li>
+                                        </ul>
+                                    </li>';
+                                }
+                            ?>
                         </ul>
                 </nav>
             </div>
@@ -327,7 +336,7 @@
 								$query = 'SELECT * FROM supervisor;';
 								$query_result = mysqli_query($conecta,$query);
 							?>
-							
+							<a href="registro_supervisor.php"><button type="button" class="btn btn-info"> + Nuevo Registro</button></a>
 						<br><br>
 						<table id="productos" style="text-align:center">
 								<thead style="">
@@ -335,6 +344,7 @@
 									<th>Nombre</th>
 									<th>Apellido Paterno</th>
 									<th>Apellido Materno</th>
+				                    <th>No. Línea</th>
 									<th></th>
 									<th></th>
 								</thead>
@@ -349,8 +359,8 @@
 												<td>'.$row[2].'</td>
 												<td>'.$row[3].'</td>												
                                                 <td>'.$row[5].'</td>
-												<td><span type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#staticModal" onclick="editarDatos('.$row[1].')">Editar</span></td>
-												<td>'.$row[3].'</td>
+												<!--<td><span type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#staticModal" onclick="editarDatos('.$row[1].')">Editar</span></td>
+												<td>'.$row[3].'</td>-->
 												<td><a href=modificar_supervisor.php?id='.$row[0].'><button type="button" class="btn btn-success">Editar</button></a></td>
 												<td><a href=eliminar_supervisor.php?id='.$row[0].'><button type="button" class="btn btn-danger">Eliminar</button></a></td>
 											</tr>';

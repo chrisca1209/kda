@@ -2,22 +2,21 @@
     $accion = (isset($_GET['accion']))?$_GET['accion']:'leer';
     switch($accion){
             
-            
-            case 'AgregarHoraEntrada':
-             include 'conexion.php';
-      $sql = "select time(now()) as hora";
+    case 'AgregarHoraEntrada':
+         include 'conexion.php';
+        $sql = "select time(now()) as hora";
             //echo $sql;
-            $consulta = mysqli_query($conexion,$sql);
-      $datos = mysqli_fetch_array($consulta);
-      $hora = $datos[0];
+        $consulta = mysqli_query($conexion,$sql);
+        $datos = mysqli_fetch_array($consulta);
+        $hora = $datos[0];
             //echo $hora;
         header('Content-Type: application/json');
-      $pdo = new PDO("mysql:dbname=kda;host=localhost","root","");
-      $sentenciaSQL = $pdo->prepare("INSERT INTO asistencia (horaEntrada,id_supervisor) VALUES (:hor,:id_supervisor)");
-      //$sentenciaSQL = $pdo->prepare("update asistencia set horaEntrada=:hor where id_supervisor=:id");
-      $respuesta = $sentenciaSQL->execute(array("hor"=>$hora,"id_supervisor"=>$_POST['id']));
-      echo json_encode($respuesta);
-            break;
+        $pdo = new PDO("mysql:dbname=kda;host=localhost","root","");
+        $sentenciaSQL = $pdo->prepare("INSERT INTO asistencia (horaEntrada,id_supervisor) VALUES (:hor,:id_supervisor)");
+        //$sentenciaSQL = $pdo->prepare("update asistencia set horaEntrada=:hor where id_supervisor=:id");
+        $respuesta = $sentenciaSQL->execute(array("hor"=>$hora,"id_supervisor"=>$_POST['id']));
+            echo json_encode($respuesta);            
+    break;
     case 'agregarNuevoSupervisor':
       //instruccion de agregad
       header('Content-Type: application/json');
@@ -29,13 +28,13 @@
         "am" => $_POST['apm'],
         "noLinea" => $_POST['noli']
       ));
-     echo json_encode($respuesta);
+            echo json_encode($respuesta);
       //echo "jhjhghjgkjj";      
      // echo "agregarNuevoEmpleado";
     //  echo $_POST['nomemp']." ".$_POST['app'];
-            break;
+    break;
             
-    case 'AgregarHoraEntrada':
+    /*case 'AgregarHoraEntrada':
       include 'conexion.php';
     $sql = "select time(now()) as hora";
             echo $sql;
@@ -49,8 +48,8 @@
       //$sentenciaSQL = $pdo->prepare("update asistencia set horaEntrada=:hor where id_supervisor=:id");
       $respuesta = $sentenciaSQL->execute(array("hor"=>$hora,"id"=>$_POST['id']));
       echo json_encode($respuesta);*/
-      /*echo $hora;*/
-      break;
+      /*echo $hora;
+      break;*/
     case 'AgregarHoraSalida':
       include 'conexion.php';
       $sql = "select time(now()) as hora";

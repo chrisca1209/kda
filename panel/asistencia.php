@@ -87,7 +87,7 @@
                                 }
                                 ?>
                                 <?php 
-                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
+                                        if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
                                             echo'
                                                 <li class="active has-sub">
                                                     <a class="js-arrow" href="asistencia.php">
@@ -101,13 +101,13 @@
                                             <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
-                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
+                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2)){
                                                         echo '
                                                         <li class="  has-sub">
                                                             <a href="linea1.php">Línea 1</a>
                                                         </li>';
                                                 }
-                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 5))){
+                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 3))){
                                                         echo '
                                                         <li>
                                                            <a href="linea2.php">Línea 2</a>
@@ -134,9 +134,9 @@
                                     <?php 
                                 if($_SESSION['id_roluser'] == 1){
                                     echo
-                                            '<li class=" has-sub">
+                                            '<!--<li class=" has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
-                                            </li>
+                                            </li>-->
                                             <li class=" has-sub">
                                                 <a href="ver_supervisor.php">Ver Supervisor</a>
                                             </li>
@@ -332,6 +332,39 @@
                         </div>
 						<br>
 						<button type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#staticModal">Asistencia</button>
+                       
+                       <br><br>
+                       
+                       <table id="asistencias" width="100%">
+							    <thead>
+                                    <th>#</th>
+							        <th>Hora de Entrada</th>							        
+							        <th>Hora de Salida</th>
+							        <th>Nombre Supervisor</th>
+							        <th>Fecha</th>
+							    </thead>
+							    <tbody>
+                                    <?php 
+                                    //include ('../adm/conexion.php');
+                                    $sql = 'select id_asistencia, horaEntrada, horaSalida, Nombre, curdate() as Fecha from asistencia inner join supervisor where asistencia.id_supervisor=supervisor.id_supervisor;';
+                                    $result = mysqli_query($conecta,$sql);
+                                    
+                                    //
+                                        while(($row = mysqli_fetch_array($result)) != null){
+                                            echo '<tr>
+                                            <td>'.$row[0].'</td>
+                                            <td>'.$row[1].'</td>
+                                            <td>'.$row[2].'</td>
+                                            <td>'.$row[3].'</td>
+                                            <td>'.$row[4].'</td>
+                                            </tr>';
+                                        }
+                                    
+                                    
+                                    ?>
+							        
+							    </tbody>
+							</table>
                         
                     </div>
                 </div>
@@ -378,10 +411,10 @@
 					<div style="width:100;height:50px;"></div>
 					<div style="width:100;height:50px;"></div>
 						</div>
-						<div class="modal-footer">
+						<!--<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 							<button type="button" id="btnFin" class="btn btn-primary" style="float: left;">Calcular</button>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>
@@ -420,7 +453,7 @@
 			
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#productos').DataTable();
+			$('#asistencias').DataTable();
 		} );
 	</script>
 
