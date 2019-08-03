@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2019 a las 01:28:19
+-- Tiempo de generación: 03-08-2019 a las 04:33:18
 -- Versión del servidor: 10.1.40-MariaDB
 -- Versión de PHP: 7.1.29
 
@@ -34,13 +34,6 @@ CREATE TABLE `asistencia` (
   `horaSalida` time NOT NULL,
   `id_supervisor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `asistencia`
---
-
-INSERT INTO `asistencia` (`id_asistencia`, `horaEntrada`, `horaSalida`, `id_supervisor`) VALUES
-(1, '18:25:29', '00:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -96,13 +89,6 @@ CREATE TABLE `mantenimiento` (
   `Descripcion` text NOT NULL,
   `Fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `mantenimiento`
---
-
-INSERT INTO `mantenimiento` (`id_mantenimiento`, `No_interno_maquina`, `Descripcion`, `Fecha`) VALUES
-(1, 1, 'bjsdbjhvbsdjv', '2019-07-18');
 
 -- --------------------------------------------------------
 
@@ -284,13 +270,6 @@ CREATE TABLE `proveedor` (
   `correo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `proveedor`
---
-
-INSERT INTO `proveedor` (`id_proveedor`, `nombre_proveedor`, `telefono`, `correo`) VALUES
-(1, 'Juan', '246-105-9503', 'juan@proveedor.com');
-
 -- --------------------------------------------------------
 
 --
@@ -302,7 +281,7 @@ CREATE TABLE `supervisor` (
   `Nombre` varchar(45) NOT NULL,
   `ap_paterno` varchar(45) DEFAULT NULL,
   `ap_materno` varchar(45) DEFAULT NULL,
-  `hrs_trabajadas` varchar(65) DEFAULT NULL,
+  `hrs_trabajadas` varchar(65) NOT NULL,
   `No_linea` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -311,10 +290,10 @@ CREATE TABLE `supervisor` (
 --
 
 INSERT INTO `supervisor` (`id_supervisor`, `Nombre`, `ap_paterno`, `ap_materno`, `hrs_trabajadas`, `No_linea`) VALUES
-(2, 'Moises', 'Perez', 'Arce', '', '1'),
-(3, 'Carolina', 'Arroyo', 'Hernandez', '', '3'),
-(4, 'Juana', 'Deita', 'Sanchez', '', '2'),
-(5, 'Taller', '', '', '', '');
+(2, 'Moises', 'PÃ©rez', 'Arce', '', '1'),
+(3, 'Juana', 'Deita', 'SÃ¡nchez', '', '2'),
+(4, 'Carolina', 'Arroyo', 'HÃ©rnandez', '', '3'),
+(5, 'Taller', 'Taller', 'Taller', '', '4');
 
 -- --------------------------------------------------------
 
@@ -338,9 +317,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `ap_paterno`, `ap_materno`, `email`, `password`, `id_roluser`) VALUES
 (1, 'Administrador', '', '', 'administrador@kda.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 1),
-(2, 'Moises', 'Pérez', 'Arce', 'moises@kda.com', 'a702139b2203137fb0e859ca6b921138aab73a05153b9734f88782cf30e02147', 3),
-(3, 'Carolina', 'Arroyo', 'Hernández', 'carolina@kda.com', 'eb5af10f6d98cf42c5bffb11751deeaf4d106d62fde5f42d50f1d347e4aa8564', 4),
-(4, 'Juana', 'Deita', 'Sánchez', 'juana@kda.com', 'b9bb221b3a10522163ae4046ea58305f1636cd4722fed5b0c75dba33675f4970', 5);
+(2, 'Moises', 'Pérez', 'Arce', 'moises@kda.com', 'a702139b2203137fb0e859ca6b921138aab73a05153b9734f88782cf30e02147', 2),
+(3, 'Juana', 'Deita', 'Sánchez', 'juana@kda.com', 'b9bb221b3a10522163ae4046ea58305f1636cd4722fed5b0c75dba33675f4970', 3),
+(4, 'Carolina', 'Arroyo', 'Hernández', 'carolina@kda.com', 'eb5af10f6d98cf42c5bffb11751deeaf4d106d62fde5f42d50f1d347e4aa8564', 4);
 
 --
 -- Índices para tablas volcadas
@@ -420,7 +399,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `linea_1`
@@ -444,7 +423,7 @@ ALTER TABLE `linea_3`
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
-  MODIFY `id_mantenimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_mantenimiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `maquinas`
@@ -468,7 +447,7 @@ ALTER TABLE `produccion`
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `supervisor`
