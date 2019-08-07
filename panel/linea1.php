@@ -16,6 +16,8 @@ include ('../adm/conexion.php');
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 	<link rel="icon" href="../images/kda1.ico" type="image/ico">
+		 <!-- Title Page-->
+    <title>Linea 1</title>
 
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -67,7 +69,7 @@ include ('../adm/conexion.php');
                             }
                             ?>
                             <?php 
-                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
+                                        if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
                                             echo'
                                                 <li class="has-sub">
                                                     <a class="" href="asistencia.php">
@@ -76,20 +78,20 @@ include ('../adm/conexion.php');
                                             ';
                                         }
                                     ?>
-                       <li class="active has-sub">
+                               <li class="active has-sub">
                                        <a class="js-arrow" href="#">
-                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
+                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
-                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
+                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2)){
                                                         echo '
-                                                        <li class=" active has-sub">
+                                                        <li >
                                                             <a href="linea1.php">Línea 1</a>
                                                         </li>';
                                                 }
-                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 5))){
+                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 3))){
                                                         echo '
-                                                        <li>
+                                                        <li class=" active has-sub">
                                                            <a href="linea2.php">Línea 2</a>
                                                         </li>';
                                                }
@@ -114,9 +116,9 @@ include ('../adm/conexion.php');
                                     <?php 
                                 if($_SESSION['id_roluser'] == 1){
                                     echo
-                                            '<li class=" has-sub">
+                                            '<!--<li class=" has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
-                                            </li>
+                                            </li>-->
                                             <li class=" has-sub">
                                                 <a href="ver_supervisor.php">Ver Supervisor</a>
                                             </li>
@@ -326,15 +328,8 @@ include ('../adm/conexion.php');
 							
 						</div>
 						<div>
-							
-									<div class="overview-wrap">
-										<button class="au-btn au-btn-icon au-btn--blue" name="Guardar">
-											Guardar
-										</button>
-									</div>
-							
 							<?php 
-								$query = 'SELECT * FROM linea_1;';
+								$query = 'SELECT * FROM linea_2;';
 								$query_result = mysqli_query($conexion,$query);
 							?>
 						<br><br>
@@ -351,7 +346,7 @@ include ('../adm/conexion.php');
 										while(($row = mysqli_fetch_array($query_result)) != null){
 										
 											echo '<tr>
-												<td>'.$row['id_linea1'].'</td>
+												<td>'.$row['id_linea2'].'</td>
 												<td>'.$row['cantidad'].'</td>
 												<td>'.$row['descripcion'].'</td>
 												<td>'.$row['fecha'].'</td>
