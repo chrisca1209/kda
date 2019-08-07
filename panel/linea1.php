@@ -67,27 +67,27 @@ include ('../adm/conexion.php');
                             }
                             ?>
                             <?php 
-                                        if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
+                                        if(($_SESSION['id_roluser'] == 3) || ($_SESSION['id_roluser'] == 5) || ($_SESSION['id_roluser'] == 4 || ($_SESSION['id_roluser'] == 1))){
                                             echo'
-                                                <li class=" has-sub">
+                                                <li class="has-sub">
                                                     <a class="" href="asistencia.php">
                                                     <i class="fas fa-circle"></i>Asistencia</a>
                                                 </li>
                                             ';
                                         }
                                     ?>
-                               <li class="active has-sub">
+                       <li class="active has-sub">
                                        <a class="js-arrow" href="#">
-                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
+                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción.</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
-                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2)){
+                                               if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 3)){
                                                         echo '
-                                                        <li class="active  has-sub">
+                                                        <li class=" active has-sub">
                                                             <a href="linea1.php">Línea 1</a>
                                                         </li>';
                                                 }
-                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 3))){
+                                                if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] == 5))){
                                                         echo '
                                                         <li>
                                                            <a href="linea2.php">Línea 2</a>
@@ -114,9 +114,9 @@ include ('../adm/conexion.php');
                                     <?php 
                                 if($_SESSION['id_roluser'] == 1){
                                     echo
-                                            '<!--<li class=" has-sub">
+                                            '<li class=" has-sub">
                                                     <a href="nominasuper.php">Nómina</a>
-                                            </li>-->
+                                            </li>
                                             <li class=" has-sub">
                                                 <a href="ver_supervisor.php">Ver Supervisor</a>
                                             </li>
