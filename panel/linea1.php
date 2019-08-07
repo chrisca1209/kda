@@ -16,7 +16,7 @@ include ('../adm/conexion.php');
     <link href="../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 	<link rel="icon" href="../images/kda1.ico" type="image/ico">
-
+<title>Linea 1</title>
     <!-- Bootstrap CSS-->
     <link href="../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
