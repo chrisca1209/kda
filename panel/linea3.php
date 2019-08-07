@@ -405,7 +405,7 @@ include ('../adm/conexion.php');
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" id="btnagregarlinea1" class="btn btn-primary">Agregar</button>
+        <button type="button" id="btnagregarlinea3" class="btn btn-primary">Agregar</button>
       </div>
     </div>
   </div>
