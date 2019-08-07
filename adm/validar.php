@@ -4,7 +4,9 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 	
-	$query = 'SELECT * FROM usuario WHERE email="'.$email.'" and password=sha2("'.$password.'",0)';
+	
+	$query = 'SELECT * FROM usuario WHERE email="'.$email.'" and password=SHA2("'.$password.'",0)';
+	//echo $query;
 	
 	$res_query = mysqli_query($conexion, $query);
     if (mysqli_num_rows($res_query) == 1) {
