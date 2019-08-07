@@ -225,7 +225,7 @@ while($datos=mysqli_fetch_array($consulta)){
                                         if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
                                             echo'
                                                 <li class="has-sub">
-                                                    <a class="js-arrow" href="asistencia.php">
+                                                    <a class="" href="asistencia.php">
                                                     <i class="fas fa-circle"></i>Asistencia</a>
                                                 </li>
                                             ';
@@ -302,7 +302,7 @@ while($datos=mysqli_fetch_array($consulta)){
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="hidden" name="search" />
                                 <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>-->

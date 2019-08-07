@@ -87,7 +87,7 @@
                                 <?php 
                                         if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
                                             echo'
-                                                <li class="active has-sub">
+                                                <li class=" has-sub">
                                                     <a class="js-arrow" href="asistencia.php">
                                                     <i class="fas fa-circle"></i>Asistencia</a>
                                                 </li>
@@ -165,7 +165,7 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="hidden" name="search" />
                                 <!--<button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>-->
@@ -339,6 +339,7 @@
 									$nomemp=$r[1];
 									$app=$r[2];
 									$apm=$r[3];
+                                    $numlinea=$r[5];
 								}
 							
 							?>
@@ -352,6 +353,8 @@
 									<label>Apellido Paterno: </label>	<input type="text" name="app" value="<?php echo $app; ?>" style="width:220px"  placeholder="	Nombre_Proveedor"/>
 									<br><br>
 									<label>Apellido Materno: </label>	<input type="text" name="apm" value="<?php echo $apm; ?>" style="width:220px"  placeholder="	Nombre_Proveedor"/>
+									<br><br>
+									<label>Número de Linea: </label>	<input type="text" name="numlinea" value="<?php echo $numlinea; ?>" style="width:220px"  placeholder="	Numero Línea"/>
 									<br><br>
 									<div class="overview-wrap">
 										<h3>¿Desea Actualizar todo el registro?</h3>
@@ -415,10 +418,11 @@
 	@$nomemp=$_POST['nomemp'];
 	@$app=$_POST['app'];
 	@$apm=$_POST['apm'];
+    @$numlinea=$_POST['numlinea'];
 	
 		if(isset($id)){
 			//$insertar=mysqli_query($conexion,"update producto set nombre='$nomprodu', color='$color', talla='$talla', estado_origen='$estadoori', id_proveedor='$proveedor', id_categoria='$categoria',precio='$precioad', gasto_indi='$gastoin' where id_producto='$id';");
-			$sql = 'update supervisor set nombre = "'.$nomemp.'", ap_paterno="'.$app.'", ap_materno="'.$apm.'" where id_supervisor='.$id.';';
+			$sql = 'update supervisor set nombre = "'.$nomemp.'", ap_paterno="'.$app.'", ap_materno="'.$apm.'", No_linea="'.$numlinea.'" where id_supervisor='.$id.';';
 			echo "Mi SQL es: ".$sql;
 			$insertar = mysqli_query($conexion,$sql);
 				if($insertar){
