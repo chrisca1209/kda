@@ -52,6 +52,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
+                 <br><div class="sidebar-brand-text mx-3"><h2 style="font-size:40px;font-family:Constantia;color:darkblue;text-align:center;">Industrias KDA</h2><h6 style="font-size:15px;font-family:Constantia;color:darkblue;text-align:center;">S.A. de C.V</h6></div>
                     <!--<br><img src="../images/kda1.png" alt="" width="100px" class="redonded-circle"/>-->
                 </a>
             </div>
