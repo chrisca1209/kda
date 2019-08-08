@@ -57,14 +57,15 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="./dashboard.php">
-                    <br><br><br><br><img src="../images/kda1.png" alt="" width="180px"/>
+                 <br><div class="sidebar-brand-text mx-3"><h2 style="font-size:40px;font-family:Constantia;color:darkblue;text-align:center;">Industrias KDA</h2><h6 style="font-size:15px;font-family:Constantia;color:darkblue;text-align:center;">S.A. de C.V</h6></div>
+                    <!--<br><img src="../images/kda1.png" alt="" width="100px" class="redonded-circle"/>-->
                 </a>
             </div>
-            <br><br><br>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
-                           <li class=" has-sub">
+                        <ul class="list-unstyled navbar__list">
+                          <hr class="sidebar-divider">
+                           <li class="has-sub">
                                     <a class="js-arrow" href="./dashboard.php">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                                 </li>
@@ -72,8 +73,12 @@
                             if($_SESSION['id_roluser'] == 1){
                                 echo 
                                 '
-                                <li class=" has-sub">
-                                    <a class="js-arrow" href="verma.php">
+                                <hr class="sidebar-divider">
+                                <div class="sidebar-heading">
+                                    <h6 style="color:blue">Mantenimiento</h6>
+                                </div>
+                                <li class="has-sub">
+                                    <a class="" href="verma.php">
                                         <i class="fas fa-table"></i>Ver Máquina</a>
                                     <!--<ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <li class=" has-sub">
@@ -86,19 +91,13 @@
                                  </li>';
                                 }
                                 ?>
-                               <?php 
-                                        if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
-                                            echo'
-                                                <li class="has-sub">
-                                                    <a class="js-arrow" href="asistencia.php">
-                                                    <i class="fas fa-circle"></i>Asistencia</a>
-                                                </li>
-                                            ';
-                                        }
-                                    ?>
+                                    <hr class="sidebar-divider">
+                                <div class="sidebar-heading">
+                                    <h6 style="color:blue">Producción</h6>
+                                </div>
                                <li class=" has-sub">
                                        <a class="js-arrow" href="#">
-                                            <i class="fas fa-chart-bar"></i>Cantidad de Producción</a>
+                                            <i class="fas fa-chart-bar"></i>Líneas</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <?php
                                                if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2)){
@@ -115,7 +114,7 @@
                                                }
                                                 if(($_SESSION['id_roluser'] == 1 || ($_SESSION['id_roluser'] ==4))){
                                                    echo '
-                                                        <li>
+                                                        <li class="has-sub">
                                                            <a href="linea3.php">Línea 3</a>
                                                         </li>';
                                                }
@@ -123,9 +122,28 @@
                                         </ul>
                                     </li>
                                     <?php 
+                                        if(($_SESSION['id_roluser'] == 1) || ($_SESSION['id_roluser'] == 2) || ($_SESSION['id_roluser'] == 3 || ($_SESSION['id_roluser'] == 4))){
+                                            echo'
+                                                 <hr class="sidebar-divider">
+                                                    <div class="sidebar-heading">
+                                                        <h6 style="color:blue">Pase de Asistencia</h6>
+                                                    </div>
+                                                <li class="has-sub">
+                                                    <a class="" href="asistencia.php">
+                                                    <i class="fas fa-circle"></i>Asistencia</a>
+                                                </li>
+                                            ';
+                                        }
+                                    ?>
+                                <?php 
                                 if(($_SESSION['id_roluser'] == 1)){
                                     echo
-                                    '<li class="active has-sub">
+                                    '
+                                    <hr class="sidebar-divider">
+                                <div class="sidebar-heading" style="font-size:15px;color:">
+                                    <h6 style="color:blue">Supervisores y Proveedores</h6>
+                                </div>
+                                    <li class="active has-sub">
                                         <a class="js-arrow" href="#">
                                             <i class="far fa-check-square"></i>Supervisores</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -146,7 +164,7 @@
                                         <a class="js-arrow" href="#">
                                             <i class="fas fa-star"></i>Proveedores.</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                            <li class=" has-sub">
+                                            <li>
                                                 <a href="ver_proveedor.php">Ver Proveedores</a>
                                             </li>
                                         </ul>
